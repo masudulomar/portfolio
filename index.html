@@ -126,7 +126,7 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
 
     .journey-step { display:flex; align-items:center; gap:30px; margin-bottom:50px; opacity:0; transform:translateY(50px); transition:0.6s; }
     .journey-step.visible { opacity:1; transform:translateY(0); }
-    .journey-text { flex:1; background:#fff; padding:25px; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.1); }
+    .journey-text { height:250px; flex:1; background:#fff; padding:25px; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.1); }
     .journey-text h3 { color:#003366; margin-bottom:10px; }
     .journey-text p { font-size:16px; line-height:1.7; }
 /*    .journey-image { flex:1; text-align:center; }
@@ -159,7 +159,8 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
 /* ensure each slide takes full width */
 .slides > img {
   flex: 0 0 100%;
-  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
   height: 100%;
   object-fit: cover;
 }
@@ -398,6 +399,7 @@ tabButtons.forEach(btn => btn.addEventListener('click', () => {
 
 </body>
 </html>
+
 
 
 
