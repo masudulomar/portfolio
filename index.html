@@ -150,6 +150,11 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
   position: relative;
 }
 
+.slidesifr {
+  display: flex;
+  height: 100%;
+}
+
 .slides {
   display: flex;
   height: 100%;
@@ -165,7 +170,7 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
   object-fit: cover;
 }
 
-.slides > iframe {
+.slidesifr > iframe {
   flex: 0 0 100%;
   min-width: 100%;
   max-width: 100%;
@@ -261,7 +266,7 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
       <p>I have contributed as a <strong>Data Analyst</strong> at Staff Asia and <strong>Assistant Programmer</strong> at BHBFC before joining MoD. Passionate about programming contests, research, and problem-solving.</p>
       <div class="highlights">
         <div class="highlight-box"><h3>5+ Years</h3><p>Experiences in both Govt. & Private sectors dealing with IT, Administration, Procurement and Defence Budget</p></div>
-        <div class="highlight-box"><h3>Engineering</h3><p>Skilled in software engineering and data science</p></div>
+        <div class="highlight-box"><h3>Specialised In</h3><p>Skilled in software engineering and data science</p></div>
         <div class="highlight-box"><h3>Leadership</h3><p>Proven track record in staff management & team coordination</p></div>
       </div>
       <button class="btn" onclick="showJourney()">Explore My Journey →</button>
@@ -374,19 +379,9 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
       <div class="journey-text"><h3>Videography</h3><p>Producing and editing engaging videos, combining storytelling and technical skills.</p></div>
       <div class="journey-image">
         <div class="slider">
-          <div class="slides">
+          <div class="slidesifr">
             <iframe 
               title="video 1"
-              width="560" 
-              height="315" 
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-              title="YouTube video player" 
-              frameborder="0" 
-              allow="autoplay; encrypted-media" 
-              allowfullscreen>
-            </iframe>
-            <iframe 
-              title="video 2"
               width="560" 
               height="315" 
               src="https://www.youtube.com/embed/L7xIooxqVyQ" 
@@ -395,6 +390,16 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
               allow="autoplay; encrypted-media" 
               allowfullscreen>
             </iframe>
+            <!--<iframe 
+              title="video 2"
+              width="560" 
+              height="315" 
+              src="https://www.youtube.com/embed/L7xIooxqVyQ" 
+              title="YouTube video player" 
+              frameborder="0" 
+              allow="autoplay; encrypted-media" 
+              allowfullscreen>
+            </iframe>-->
             <iframe 
               title="video 3"
               width="560" 
@@ -519,6 +524,7 @@ tabButtons.forEach(btn => btn.addEventListener('click', () => {
 
 </body>
 </html>
+
 
 
 
