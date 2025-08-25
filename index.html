@@ -165,6 +165,14 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
   object-fit: cover;
 }
 
+.slides > iframe {
+  flex: 0 0 100%;
+  min-width: 100%;
+  max-width: 100%;
+  height: 100%;
+  border: none;
+}
+
 /* nav buttons */
 .journey-image .slider-btn {
   position: absolute;
@@ -242,9 +250,9 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
       <p>I am <strong>Masudul Haque Omar</strong>, currently serving as an <strong>Assistant Director at Ministry of Defence, Bangladesh</strong>. I bring expertise in data science, programming, system development, and administration.</p>
       <p>I have contributed as a <strong>Data Analyst</strong> at Staff Asia and <strong>Assistant Programmer</strong> at BHBFC before joining MoD. Passionate about programming contests, research, and problem-solving.</p>
       <div class="highlights">
-        <div class="highlight-box"><h3>5+ Years</h3><p>Experience in IT & Administration</p></div>
-        <div class="highlight-box"><h3>Data Science</h3><p>Skilled in data analysis & visualization</p></div>
-        <div class="highlight-box"><h3>Leadership</h3><p>Proven track record in management & team coordination</p></div>
+        <div class="highlight-box"><h3>5+ Years</h3><p>Experiences in both Govt. and Private organisations dealing with IT, Administration, Defence Budget</p></div>
+        <div class="highlight-box"><h3>Software Engineering & Data Science</h3><p>Skilled in software engineering and data analysis</p></div>
+        <div class="highlight-box"><h3>Leadership</h3><p>Proven track record in staff management & team coordination</p></div>
       </div>
       <button class="btn" onclick="showJourney()">Explore My Journey →</button>
     </div>
@@ -397,7 +405,7 @@ function setupSliders(autoMs = 4000) {
   sliders.forEach(slider => {
     const container = slider.closest('.journey-image');
     const slides = slider.querySelector('.slides');
-    const imgs = slides.querySelectorAll('img');
+    const items = slides.children;
     const prev = container.querySelector('.slider-prev');
     const next = container.querySelector('.slider-next');
 
@@ -405,14 +413,14 @@ function setupSliders(autoMs = 4000) {
     let timer = null;
 
     function go(i) {
-      if (!imgs.length) return;
-      index = (i + imgs.length) % imgs.length;
+      if (!items.length) return;
+      index = (i + items.length) % items.length;
       slides.style.transform = `translateX(-${index * 100}%)`;
     }
 
     function start() {
       stop();
-      if (imgs.length > 1) {
+      if (items.length > 1) {
         timer = setInterval(() => go(index + 1), autoMs);
       }
     }
@@ -423,7 +431,7 @@ function setupSliders(autoMs = 4000) {
     }
 
     // Hide controls if only one image
-    if (imgs.length < 2) {
+    if (items.length < 2) {
       if (prev) prev.style.display = 'none';
       if (next) next.style.display = 'none';
     }
@@ -455,6 +463,7 @@ tabButtons.forEach(btn => btn.addEventListener('click', () => {
 
 </body>
 </html>
+
 
 
 
