@@ -152,27 +152,34 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
 
 .slides {
   display: flex;
-  width: 300%; /* 100% * number of images */
   height: 100%;
-  animation: slide 12s infinite;
+  transition: transform 0.5s ease-in-out;
 }
 
-.slides img {
+/* ensure each slide takes full width */
+.slides > img {
+  flex: 0 0 100%;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* Smooth sliding keyframes */
-@keyframes slide {
-  0%   { transform: translateX(0%); }
-  25%  { transform: translateX(0%); }
-  30%  { transform: translateX(-100%); }
-  55%  { transform: translateX(-100%); }
-  60%  { transform: translateX(-200%); }
-  85%  { transform: translateX(-200%); }
-  100% { transform: translateX(0%); }
+/* nav buttons */
+.journey-image .slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 2;
 }
+.journey-image .slider-prev { left: 8px; }
+.journey-image .slider-next { right: 8px; }
+
 
 
     @media(max-width:900px){ .journey-step{flex-direction:column;} .journey-image img{max-width:90%; margin:auto;} }
@@ -242,14 +249,18 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
     <div class="journey-step">
       <div class="journey-text"><h3>School</h3><p>Sylhet Govt. Pilot High School – GPA 5.00 in SSC, early programming & math competitions.</p></div>
       <div class="journey-image">
-      <div class="slider">
-       <div class="slides">
-          <img src="school.jpg" alt="School 1">
-          <img src="school2.jpg" alt="School 2">
-          <img src="school3.jpg" alt="School 3">
-       </div>
+        <div class="slider">
+          <div class="slides">
+            <img src="school1.jpg" alt="School 1">
+            <img src="school2.jpg" alt="School 2">
+            <img src="school3.jpg" alt="School 3">
+          </div>
+        </div>
+        <button class="slider-btn slider-prev" aria-label="Previous slide">❮</button>
+        <button class="slider-btn slider-next" aria-label="Next slide">❯</button>
       </div>
-    </div>
+
+
 
     </div>
     <div class="journey-step">
@@ -321,7 +332,70 @@ function showTab(tab){
 
   window.scrollTo({ top: document.getElementById("journey").offsetTop - 80, behavior:'smooth' });
 }
+
+// === Slider logic (auto + manual) ===
+function setupSliders(autoMs = 4000) {
+  const sliders = document.querySelectorAll('.journey-image .slider');
+
+  sliders.forEach(slider => {
+    const container = slider.closest('.journey-image');
+    const slides = slider.querySelector('.slides');
+    const imgs = slides.querySelectorAll('img');
+    const prev = container.querySelector('.slider-prev');
+    const next = container.querySelector('.slider-next');
+
+    let index = 0;
+    let timer = null;
+
+    function go(i) {
+      if (!imgs.length) return;
+      index = (i + imgs.length) % imgs.length;
+      slides.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    function start() {
+      stop();
+      if (imgs.length > 1) {
+        timer = setInterval(() => go(index + 1), autoMs);
+      }
+    }
+
+    function stop() {
+      if (timer) clearInterval(timer);
+      timer = null;
+    }
+
+    // Hide controls if only one image
+    if (imgs.length < 2) {
+      if (prev) prev.style.display = 'none';
+      if (next) next.style.display = 'none';
+    }
+
+    if (prev) prev.addEventListener('click', () => { go(index - 1); start(); });
+    if (next) next.addEventListener('click', () => { go(index + 1); start(); });
+
+    // Pause on hover for better UX
+    container.addEventListener('mouseenter', stop);
+    container.addEventListener('mouseleave', start);
+
+    go(0);
+    start();
+  });
+}
+
+// Run once on load
+setupSliders();
+
+// Optional: when switching tabs, restart animations for visible tab
+const tabButtons = document.querySelectorAll('.tab-buttons button');
+tabButtons.forEach(btn => btn.addEventListener('click', () => {
+  // small delay so tab becomes visible, then reset transforms/timers
+  setTimeout(() => setupSliders(), 50);
+}));
+
+  
 </script>
 
 </body>
 </html>
+
