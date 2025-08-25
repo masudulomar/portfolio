@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Masudul Haque Omar - Portfolio</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background: #f4f6f9;
+      color: #333;
+    }
+
+    /* Navbar */
+    nav {
+      background: #003366;
+      display: flex;
+      justify-content: center;
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav a {
+      color: white;
+      margin: 0 20px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      color: #ffcc00;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 50px 20px;
+      background: linear-gradient(135deg, #003366, #00509e);
+      color: white;
+    }
+    .hero img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 5px solid #ffcc00;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: 32px;
+      margin: 10px 0;
+    }
+    .hero h3 {
+      font-weight: normal;
+      margin: 5px 0 15px;
+    }
+    .hero a {
+      color: #ffcc00;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    /* About Section */
+    .about {
+      background: white;
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: 40px auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .about h2 {
+      color: #003366;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .about p {
+      font-size: 16px;
+      line-height: 1.8;
+      text-align: justify;
+    }
+
+    /* Highlight Section */
+    .highlights {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 40px;
+      max-width: 1100px;
+      margin: auto;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+    .card h2 {
+      color: #003366;
+      margin-bottom: 10px;
+    }
+    .card p {
+      margin-bottom: 15px;
+    }
+    .card a {
+      color: #00509e;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .card a:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    footer {
+      background: #003366;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+    footer a {
+      color: #ffcc00;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="academics.html">Academics</a>
+    <a href="experience.html">Experience</a>
+    <a href="skills.html">Skills</a>
+    <a href="projects.html">Projects</a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <img src="myphoto.jpg" alt="Profile Photo">
+    <h1>Masudul Haque Omar</h1>
+    <h3>Assistant Director, Ministry of Defence</h3>
+    <p>Email: <a href="mailto:mhomar.0003@gmail.com">mhomar.0003@gmail.com</a></p>
+  </section>
+
+  <!-- About Me -->
+  <section class="about">
+    <h2>About Me</h2>
+    <p>
+      I am Masudul Haque Omar, currently serving as an Assistant Director in the Ministry of Defence, Government of the People’s Republic of Bangladesh. 
+      I was born and raised in Sylhet, a beautiful and culturally rich city in Bangladesh.  
+      With a strong academic foundation in Computer Science and Telecommunication Engineering from NSTU, I have always been passionate about technology, 
+      data-driven solutions, and innovation.  
+    </p>
+    <p>
+      Beyond my professional life, I have a keen interest in mathematics, astronomy, and competitive programming. 
+      I enjoy problem-solving, exploring new technologies, and contributing to projects that make a difference. 
+      My hometown Sylhet has inspired me with its heritage and natural beauty, shaping both my personal and professional outlook on life.
+    </p>
+  </section>
+
+  <!-- Highlights -->
+  <section class="highlights">
+    <div class="card">
+      <h2>🎓 Academics</h2>
+      <p>Msc (Engg) in ICT (running), BUET | BSc (Engg) in Computer Science & Telecommunication Engineering, NSTU | SSC & HSC GPA 5.00</p>
+      <a href="academics.html">View More</a>
+    </div>
+    <div class="card">
+      <h2>💼 Experience</h2>
+      <p>Assistant Director, MoD | Assistant Programmer, BHBFC | Officer(IT), Sonali Bank | Data Analyst, Staff Asia | Lecturer (ICT), Scholarshome College </p>
+      <a href="experience.html">View More</a>
+    </div>
+    <div class="card">
+      <h2>⚡ Skills</h2>
+      <p>Govt Procurement, Administration, Data Science, Programming (C, C++, C#, Java, Python with Django and Pandas), Networking</p>
+      <a href="skills.html">View More</a>
+    </div>
+    <div class="card">
+      <h2>🛠️ Projects</h2>
+      <p>Network design of a Govt Organization (Headquarter), Datacenter cable structuring, Mess Management, Task Manager, Typing Test BD, Fund Manager, Online Exam System</p>
+      <a href="projects.html">View More</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 Masudul Haque Omar | Contact: 
+    <a href="mailto:mhomar.0003@gmail.com">mhomar.0003@gmail.com</a>
+  </footer>
+</body>
+</html>
