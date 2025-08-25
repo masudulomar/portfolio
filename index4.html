@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Masudul Haque Omar - Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Poppins', sans-serif; background:#f4f7fa; color:#333; scroll-behavior:smooth; }
+    
+    /* Navbar */
+ header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: #003366;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
+
+header nav h1 { font-size:22px; font-weight:600; color:#fff; }
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  color:#fff;
+  text-decoration:none;
+  font-weight:500;
+  transition:0.3s;
+}
+
+.nav-links li a:hover { color:#ffcc00; }
+
+/* Hamburger menu hidden on desktop */
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #fff;
+}
+
+/* Mobile view */
+@media (max-width: 900px) {
+  .menu-toggle { display: block; }
+
+  .nav-links {
+    gap: 0px;
+    flex-direction: column;
+    width: 150px;                   /* slightly wider for readability */
+    display: none;                  
+    background: #f8f9fa;            /* light professional background */
+    color: #003366;                 /* text color */
+    position: absolute;
+    top: 60px;
+    right: 0;                         /* left-aligned dropdown */
+    padding: 10px 0;
+    border-radius: 6px;             
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    border: 1px solid #dde2e6;
+  }
+
+  .nav-links li {
+    text-align: left;                /* left aligned */
+    margin: 2px 0;                   /* reduced gap between lines */
+    padding: 8px 20px;               /* padding inside each item */
+  }
+
+  .nav-links li a {
+    color: #003366;
+    font-weight: 500;
+    text-decoration: none;
+    display: block;                  /* make full width clickable */
+    transition: 0.2s;
+  }
+
+  .nav-links li a:hover {
+    background: #e6f0ff;             /* subtle hover highlight */
+    color: #003366;
+    border-radius: 4px;
+  }
+
+  .nav-links.show { display: flex; }
+}
+
+    /* Hero Section */
+    .hero { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('banner.jpg') center/cover no-repeat; height:100vh; display:flex; align-items:center; justify-content:center; text-align:center; color:#fff; padding:0 20px; }
+    .hero h2 { font-size:48px; margin-bottom:20px; animation:fadeInDown 1s ease; }
+    .hero p { font-size:20px; margin-bottom:30px; animation:fadeInUp 1.5s ease; }
+    .hero .btn { background:#ffcc00; color:#003366; padding:14px 30px; border-radius:8px; text-decoration:none; font-weight:bold; transition:0.3s; }
+    .hero .btn:hover { background:#e6b800; }
+
+    /* About Section */
+    .about { background:#ffffff; padding:80px 20px; margin-top:100px; }
+    .about-container { display:flex; flex-wrap:wrap; align-items:center; max-width:1100px; margin:auto; gap:40px; }
+    .about-image { flex:1 1 280px; text-align:center; }
+    .about-image img { width:230px; height:230px; border-radius:50%; border:6px solid #003366; box-shadow:0 8px 20px rgba(0,0,0,0.2); }
+    .about-text { flex:2 1 500px; }
+    .about-text h2 { font-size:32px; margin-bottom:20px; color:#003366; position:relative; }
+    .about-text h2::after { content:""; display:block; width:70px; height:3px; background:#ffcc00; margin-top:8px; }
+    .about-text p { font-size:17px; line-height:1.8; margin-bottom:20px; text-align:justify; }
+    .highlights { display:flex; gap:30px; margin-top:20px; flex-wrap:wrap; }
+    .highlight-box { flex:1 1 200px; background:#f4f7fa; padding:20px; border-radius:10px; text-align:center; box-shadow:0 4px 10px rgba(0,0,0,0.1); transition:0.3s; }
+    .highlight-box:hover { transform:translateY(-5px); }
+    .highlight-box h3 { font-size:22px; color:#003366; margin-bottom:10px; }
+    .highlight-box p { font-size:15px; }
+    .btn { display:inline-block; background:#003366; color:white; padding:12px 25px; border-radius:6px; text-decoration:none; transition:0.3s; font-weight:bold; margin-top:20px; cursor:pointer; }
+    .btn:hover { background:#00509e; }
+
+    /* Journey Section */
+    .journey { max-width:1100px; margin:50px auto; padding:0 20px; display:none; }
+    .tab-buttons {display: flex; gap: 0px; margin-top: -90px; margin-bottom: 20px;}
+    .tab-buttons button { background:white; color:#003366; padding:8px 18px; font-size:14px; border-radius:6px; border:1px solid #d0d4da; cursor:pointer; transition:0.3s; }
+    .tab-buttons button.active, .tab-buttons button:hover { background:linear-gradient(135deg, #e0e0e0, #c0c0c0); color:#fff; }
+    .tab-content { display:none; }
+    .tab-content.active { display:block; }
+
+    .journey-step { display:flex; align-items:center; gap:30px; margin-bottom:50px; opacity:0; transform:translateY(50px); transition:0.6s; }
+    .journey-step.visible { opacity:1; transform:translateY(0); }
+    .journey-text { height:250px; flex:1; background:#fff; padding:25px; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.1); }
+    .journey-text h3 { color:#003366; margin-bottom:10px; }
+    .journey-text p { font-size:16px; line-height:1.7; }
+/*    .journey-image { flex:1; text-align:center; }
+    .journey-image img { width:100%; border-radius:12px; box-shadow:0 8px 20px rgba(0,0,0,0.2); }
+*/
+.journey-image {
+  width: 100%;
+  max-width: 350px; /* adjust size */
+  height: 250px;    /* fixed height */
+  overflow: hidden;
+  border-radius: 10px;
+  position: relative;
+  margin: auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.slider {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.slides {
+  display: flex;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+/* ensure each slide takes full width */
+.slides > img {
+  flex: 0 0 100%;
+  min-width: 100%;
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* nav buttons */
+.journey-image .slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 2;
+}
+.journey-image .slider-prev { left: 8px; }
+.journey-image .slider-next { right: 8px; }
+
+
+
+    @media(max-width:900px){ .journey-step{flex-direction:column;} .journey-image img{max-width:90%; margin:auto;} }
+
+    /* Footer */
+    footer { background:#003366; color:#fff; text-align:center; padding:25px; margin-top:50px; }
+    footer a { color:#ffcc00; text-decoration:none; }
+
+    @keyframes fadeInDown { from {opacity:0; transform:translateY(-20px);} to {opacity:1; transform:translateY(0);} }
+    @keyframes fadeInUp { from {opacity:0; transform:translateY(20px);} to {opacity:1; transform:translateY(0);} }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <h1>Masudul Haque Omar</h1>
+    <div class="menu-toggle" id="menu-toggle">☰</div>  <!-- Hamburger icon -->
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="experience.html">Career</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="projects.html">Hobbies</a></li>
+      <li><a href="projects.html">Gallery</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+
+<section class="hero">
+  <div>
+    <h2>Hello, I'm Masudul Haque Omar</h2>
+    <p>Assistant Director | Ministry of Defence, Bangladesh</p>
+    <a href="#about" class="btn">Discover More</a>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-container">
+    <div class="about-image"><img src="myphoto.jpg" alt="Masudul Haque Omar"></div>
+    <div class="about-text">
+      <h2>About Me</h2>
+      <p>I am <strong>Masudul Haque Omar</strong>, currently serving as an <strong>Assistant Director at Ministry of Defence, Bangladesh</strong>. I bring expertise in data science, programming, system development, and administration.</p>
+      <p>I have contributed as a <strong>Data Analyst</strong> at Staff Asia and <strong>Assistant Programmer</strong> at BHBFC before joining MoD. Passionate about programming contests, research, and problem-solving.</p>
+      <div class="highlights">
+        <div class="highlight-box"><h3>5+ Years</h3><p>Experience in IT & Administration</p></div>
+        <div class="highlight-box"><h3>Data Science</h3><p>Skilled in data analysis & visualization</p></div>
+        <div class="highlight-box"><h3>Leadership</h3><p>Proven track record in management & team coordination</p></div>
+      </div>
+      <button class="btn" onclick="showJourney()">Explore My Journey →</button>
+    </div>
+  </div>
+</section>
+
+<section class="journey" id="journey">
+  <!-- Tabs -->
+  <div class="tab-buttons">
+    <button class="active" onclick="showTab('career')">Career</button>
+    <button onclick="showTab('hobbies')">Hobbies</button>
+  </div>
+
+  <!-- Career Tab -->
+  <div id="career" class="tab-content active">
+    <div class="journey-step">
+      <div class="journey-text"><h3>School</h3><p>Sylhet Govt. Pilot High School – GPA 5.00 in SSC, early programming & math competitions.</p></div>
+      <div class="journey-image">
+        <div class="slider">
+          <div class="slides">
+            <img src="school1.jpg" alt="School 1">
+            <img src="school2.jpg" alt="School 2">
+            <img src="school3.jpg" alt="School 3">
+          </div>
+        </div>
+        <button class="slider-btn slider-prev" aria-label="Previous slide">❮</button>
+        <button class="slider-btn slider-next" aria-label="Next slide">❯</button>
+      </div>
+
+
+
+    </div>
+    <div class="journey-step">
+      <div class="journey-text"><h3>College</h3><p>Sylhet M.C. College – GPA 5.00 in HSC, top placements in Math & Astronomy Olympiads.</p></div>
+      <div class="journey-image"><img src="college.jpg" alt="College"></div>
+    </div>
+    <div class="journey-step">
+      <div class="journey-text"><h3>Graduation</h3><p>Dept. of CSTE, NSTU – Head of Programming Club, participated in NCPC & IUPC contests.</p></div>
+      <div class="journey-image"><img src="graduation.jpg" alt="Graduation"></div>
+    </div>
+    <div class="journey-step">
+      <div class="journey-text"><h3>Job</h3><p>Data Analyst → Assistant Programmer → Assistant Director at Ministry of Defence, Bangladesh.</p></div>
+      <div class="journey-image"><img src="job.jpg" alt="Job"></div>
+    </div>
+  </div>
+
+  <!-- Hobbies Tab -->
+  <div id="hobbies" class="tab-content">
+    <div class="journey-step">
+      <div class="journey-text"><h3>Travelling</h3><p>Exploring new places and cultures worldwide, learning from experiences, and capturing memories.</p></div>
+      <div class="journey-image"><img src="travel.jpg" alt="Traveling"></div>
+    </div>
+    <div class="journey-step">
+      <div class="journey-text"><h3>Photography</h3><p>Capturing moments creatively with attention to detail, lighting, and composition.</p></div>
+      <div class="journey-image"><img src="photography.jpg" alt="Photography"></div>
+    </div>
+    <div class="journey-step">
+      <div class="journey-text"><h3>Videography</h3><p>Producing and editing engaging videos, combining storytelling and technical skills.</p></div>
+      <div class="journey-image"><img src="videography.jpg" alt="Videography"></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Masudul Haque Omar | Contact: <a href="mailto:masudul.omar@gmail.com">masudul.omar@gmail.com</a></p>
+</footer>
+
+<script>
+
+document.getElementById('menu-toggle').addEventListener('click', function(){
+  document.getElementById('nav-links').classList.toggle('show');
+});
+
+
+function showJourney(){
+  const journey = document.getElementById("journey");
+  journey.style.display = "block";
+
+  // Hide the Explore My Journey button
+  const btn = document.querySelector(".about-text .btn");
+  btn.style.display = "none";
+
+  // Scroll to top of journey section
+  window.scrollTo({ top: journey.offsetTop - 80, behavior: 'smooth' });
+
+  // Animate career steps
+  const steps = document.querySelectorAll("#career .journey-step");
+  steps.forEach((step,i)=>{ step.classList.remove("visible"); setTimeout(()=>step.classList.add("visible"), i*300); });
+}
+
+function showTab(tab){
+  document.querySelectorAll(".tab-buttons button").forEach(btn => btn.classList.remove("active"));
+  document.querySelectorAll(".tab-content").forEach(content => content.classList.remove("active"));
+  document.querySelector(`.tab-buttons button[onclick="showTab('${tab}')"]`).classList.add("active");
+  document.getElementById(tab).classList.add("active");
+
+  const steps = document.querySelectorAll(`#${tab} .journey-step`);
+  steps.forEach((step,i)=>{ step.classList.remove("visible"); setTimeout(()=>step.classList.add("visible"), i*300); });
+
+  window.scrollTo({ top: document.getElementById("journey").offsetTop - 80, behavior:'smooth' });
+}
+
+// === Slider logic (auto + manual) ===
+function setupSliders(autoMs = 4000) {
+  const sliders = document.querySelectorAll('.journey-image .slider');
+
+  sliders.forEach(slider => {
+    const container = slider.closest('.journey-image');
+    const slides = slider.querySelector('.slides');
+    const imgs = slides.querySelectorAll('img');
+    const prev = container.querySelector('.slider-prev');
+    const next = container.querySelector('.slider-next');
+
+    let index = 0;
+    let timer = null;
+
+    function go(i) {
+      if (!imgs.length) return;
+      index = (i + imgs.length) % imgs.length;
+      slides.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    function start() {
+      stop();
+      if (imgs.length > 1) {
+        timer = setInterval(() => go(index + 1), autoMs);
+      }
+    }
+
+    function stop() {
+      if (timer) clearInterval(timer);
+      timer = null;
+    }
+
+    // Hide controls if only one image
+    if (imgs.length < 2) {
+      if (prev) prev.style.display = 'none';
+      if (next) next.style.display = 'none';
+    }
+
+    if (prev) prev.addEventListener('click', () => { go(index - 1); start(); });
+    if (next) next.addEventListener('click', () => { go(index + 1); start(); });
+
+    // Pause on hover for better UX
+    container.addEventListener('mouseenter', stop);
+    container.addEventListener('mouseleave', start);
+
+    go(0);
+    start();
+  });
+}
+
+// Run once on load
+setupSliders();
+
+// Optional: when switching tabs, restart animations for visible tab
+const tabButtons = document.querySelectorAll('.tab-buttons button');
+tabButtons.forEach(btn => btn.addEventListener('click', () => {
+  // small delay so tab becomes visible, then reset transforms/timers
+  setTimeout(() => setupSliders(), 50);
+}));
+
+  
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
