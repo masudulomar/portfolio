@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+My code is now: <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -560,66 +560,117 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
   <p>© 2025 Masudul Haque Omar | Contact: <a id="contact" href="mailto:masudul.omar@gmail.com">masudul.omar@gmail.com</a></p>
 </footer>
 
-
 <script>
+
 document.getElementById('menu-toggle').addEventListener('click', function(){
   document.getElementById('nav-links').classList.toggle('show');
 });
 
-// ===== TAB LOGIC =====
-function showTab(tab) {
-  // deactivate all
-  document.querySelectorAll('.tab-buttons button').forEach(btn => btn.classList.remove('active'));
-  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+// Also hide dropdown on scroll and on any touch/swipe outside the menu
+(() => {
+  const navLinks = document.getElementById('nav-links');
+  const toggle = document.getElementById('menu-toggle');
 
-  // activate selected
-  document.querySelector(`.tab-buttons button[onclick="showTab('${tab}')"]`)?.classList.add('active');
-  const content = document.getElementById(tab);
-  content.classList.add('active');
+  const closeMenu = () => navLinks.classList.remove('show');
 
-  // animate steps
-  content.querySelectorAll(".journey-step").forEach((step,i)=>{
-    step.classList.remove("visible");
-    setTimeout(()=>step.classList.add("visible"), i*300);
-  });
+  // Close on page scroll or mouse wheel
+  window.addEventListener('scroll', () => {
+    if (navLinks.classList.contains('show')) closeMenu();
+  }, { passive: true });
 
-  // restart sliders inside the tab
-  setupSliders();
-}
+  window.addEventListener('wheel', () => {
+    if (navLinks.classList.contains('show')) closeMenu();
+  }, { passive: true });
 
-// show journey from "Explore" button
+  // Close on touch/swipe that starts or moves outside the menu/toggle
+  const handleTouch = (e) => {
+    if (!navLinks.classList.contains('show')) return;
+    const t = e.target;
+    if (navLinks.contains(t) || toggle.contains(t)) return; // ignore touches inside menu
+    closeMenu();
+  };
+
+  document.addEventListener('touchstart', handleTouch, { passive: true });
+  document.addEventListener('touchmove', handleTouch, { passive: true });
+})();
+
+	
+// Close menu when clicking outside
+document.addEventListener('click', function(e) {
+  const navLinks = document.getElementById('nav-links');
+  const toggle = document.getElementById('menu-toggle');
+  
+  // if menu is open, and click is outside menu + toggle
+  if (navLinks.classList.contains('show') && 
+      !navLinks.contains(e.target) && 
+      !toggle.contains(e.target)) {
+    navLinks.classList.remove('show');
+  }
+});
+
+
+
 function showJourney(){
   const journey = document.getElementById("journey");
   journey.style.display = "block";
-  document.querySelector(".about-text .btn").style.display = "none";
+
+  // Hide the Explore My Journey button
+  const btn = document.querySelector(".about-text .btn");
+  btn.style.display = "none";
+
+  // Scroll to top of journey section
   window.scrollTo({ top: journey.offsetTop - 80, behavior: 'smooth' });
 
-  // animate career steps
+  // Animate career steps
   const steps = document.querySelectorAll("#career .journey-step");
-  steps.forEach((step,i)=>{
-    step.classList.remove("visible");
-    setTimeout(()=>step.classList.add("visible"), i*300);
-  });
-
-  setupSliders(); // start sliders
+  steps.forEach((step,i)=>{ step.classList.remove("visible"); setTimeout(()=>step.classList.add("visible"), i*300); });
 }
 
-// open hobbies tab directly
 function openHobbies(tabname) {
   const journey = document.getElementById("journey");
+
+  // Make sure journey section is visible
   journey.style.display = "block";
+
+  // Hide the "Explore My Journey" button if still visible
   const btn = document.querySelector(".about-text .btn");
   if (btn) btn.style.display = "none";
+
+  // Show the Hobbies tab
   showTab(tabname);
 }
 
-// ===== SLIDER LOGIC =====
+function showTab(tab){
+  document.querySelectorAll(".tab-buttons button").forEach(btn => btn.classList.remove("active"));
+  document.querySelectorAll(".tab-content").forEach(content => content.classList.remove("active"));
+  // replace this line:
+  document.querySelector(`.tab-buttons button[onclick="showTab('${tab}')"]`).classList.add("active");
+  // with this:
+  /*document.querySelectorAll(".tab-buttons button").forEach(btn => {
+    if (btn.textContent.trim().toLowerCase() === tab.toLowerCase()) {
+      btn.classList.add("active");
+    }
+  });*/
+
+	
+  document.getElementById(tab).classList.add("active");
+
+
+
+
+  const steps = document.querySelectorAll(`#${tab} .journey-step`);
+  steps.forEach((step,i)=>{ step.classList.remove("visible"); setTimeout(()=>step.classList.add("visible"), i*300); });
+
+  window.scrollTo({ top: document.getElementById("journey").offsetTop - 80, behavior:'smooth' });
+}
+
+// === Slider logic (auto + manual) ===
 function setupSliders(autoMs = 4000) {
   const sliders = document.querySelectorAll('.journey-image .slider');
+
   sliders.forEach(slider => {
     const container = slider.closest('.journey-image');
-    const slides = slider.querySelector('.slides, .slidesnotr, .slidesifr');
-    if(!slides) return;
+    const slides = slider.querySelector('.slides, .slidesnotr, .slidesifr'); 
     const items = slides.children;
     const prev = container.querySelector('.slider-prev');
     const next = container.querySelector('.slider-next');
@@ -635,74 +686,157 @@ function setupSliders(autoMs = 4000) {
 
     function start() {
       stop();
-      if (slides.classList.contains('slides') && items.length > 1) {
-        timer = setInterval(()=>go(index+1), autoMs);
+      if (slides.classList.contains('slides') && items.length > 1) { 
+        timer = setInterval(() => go(index + 1), autoMs); 
       }
+
+
     }
 
     function stop() {
-      if(timer) clearInterval(timer);
+      if (timer) clearInterval(timer);
       timer = null;
     }
 
-    function resetTimer() { stop(); start(); }
+    // Hide controls if only one image
+    if (items.length < 2) {
+      if (prev) prev.style.display = 'none';
+      if (next) next.style.display = 'none';
+    }
 
-    if(prev) prev.onclick = ()=>{ go(index-1); resetTimer(); };
-    if(next) next.onclick = ()=>{ go(index+1); resetTimer(); };
+    if (prev) prev.addEventListener('click', () => { go(index - 1); resetTimer(); });
+    if (next) next.addEventListener('click', () => { go(index + 1); resetTimer(); });
 
-    container.onmouseenter = stop;
-    container.onmouseleave = start;
+    function resetTimer() {
+      stop();   // stop current auto-slide interval
+      start();  // start a fresh interval from now
+    }
 
-    // wait for images to load
+    // Pause on hover for better UX
+    container.addEventListener('mouseenter', stop);
+    container.addEventListener('mouseleave', start);
+
+    /*go(0);
+    start();*/
+
+
+    //alternative of prev comment part -starts
+    // Wait until all images in this slider are loaded
     const imgs = slider.querySelectorAll('img');
-    let loaded = 0;
-    if(imgs.length===0){ go(0); start(); } 
-    else imgs.forEach(img=>{
-      if(img.complete){ loaded++; if(loaded===imgs.length){ go(0); start(); } }
-      else img.onload = ()=>{ loaded++; if(loaded===imgs.length){ go(0); start(); } };
-    });
+    let loadedCount = 0;
+    if (imgs.length === 0) {
+      go(0);
+      start();
+    } else {
+      imgs.forEach(img => {
+        if (img.complete) {
+          loadedCount++;
+          if (loadedCount === imgs.length) {
+            go(0);
+            start();
+          }
+        } else {
+          img.addEventListener('load', () => {
+            loadedCount++;
+            if (loadedCount === imgs.length) {
+              go(0);
+              start();
+            }
+          });
+        }
+      });
+    }
+    //alternative of prev comment part -ends
+
+
+
+
+
+
   });
 }
 
-// run once on page load
+// Run once on load
 setupSliders();
 
-// ===== SWIPE LOGIC =====
-let touchStartX=0, touchStartY=0;
-let lastSwipeTime=0;
+// Optional: when switching tabs, restart animations for visible tab
+const tabButtons = document.querySelectorAll('.tab-buttons button');
+tabButtons.forEach(btn => btn.addEventListener('click', () => {
+  // small delay so tab becomes visible, then reset transforms/timers
+  setTimeout(() => setupSliders(), 50);
+}));
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const images = document.querySelectorAll("img");
+  images.forEach(img => {
+    img.loading = "lazy"; // globally enable lazy loading
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const images = document.querySelectorAll("img");
+  images.forEach(img => {
+    img.loading = "lazy"; // globally enable lazy loading
+  });
+});
+
+
+// ================== SWIPE BETWEEN CAREER & HOBBIES ==================
+
+// ================== SWIPE BETWEEN CAREER & HOBBIES ==================
+let touchStartX = 0;
+let touchStartY = 0;
 
 function isJourneyVisible() {
   const journey = document.getElementById("journey");
   const rect = journey.getBoundingClientRect();
-  const h = window.innerHeight || document.documentElement.clientHeight;
-  return rect.top < h*0.5 && rect.bottom > h*0.5;
+  const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+  // returns true if at least 50% of journey section is visible
+  return rect.top < windowHeight * 0.5 && rect.bottom > windowHeight * 0.5;
 }
 
-document.addEventListener("touchstart", e=>{
+document.addEventListener("touchstart", e => {
   touchStartX = e.changedTouches[0].screenX;
   touchStartY = e.changedTouches[0].screenY;
-},{passive:true});
+}, { passive: true });
 
-document.addEventListener("touchend", e=>{
-  const now = Date.now();
-  if(now - lastSwipeTime < 300) return;
-  lastSwipeTime = now;
-
+document.addEventListener("touchend", e => {
   const touchEndX = e.changedTouches[0].screenX;
   const touchEndY = e.changedTouches[0].screenY;
   const diffX = touchEndX - touchStartX;
   const diffY = touchEndY - touchStartY;
 
-  if(Math.abs(diffY) > Math.abs(diffX)) return; // vertical swipe
-  if(Math.abs(diffX)<50) return;
-  if(!isJourneyVisible()) return;
+  // ignore mostly vertical swipes
+  if (Math.abs(diffY) > Math.abs(diffX)) return;
 
-  const activeTab = document.querySelector(".tab-content.active");
-  if(!activeTab) return;
+  // only act if horizontal swipe distance is significant
+  if (Math.abs(diffX) < 50) return;
 
-  if(activeTab.id==="career" && diffX < -50) showTab("hobbies");
-  else if(activeTab.id==="hobbies" && diffX > 50) showTab("career");
-});
+  // only allow swipe if journey section is at least half visible
+  if (!isJourneyVisible()) return;
+
+  const career = document.getElementById("career");
+  const hobbies = document.getElementById("hobbies");
+
+  //removing active
+  document.querySelectorAll(".tab-buttons button").forEach(btn => btn.classList.remove("active"));
+  // swipe logic
+  if (career.classList.contains("active") && diffX < -50) {
+    // swipe left → go to hobbies
+    showTab("hobbies");
+  } else if (hobbies.classList.contains("active") && diffX > 50) {
+    // swipe right → go back to career
+    showTab("career");
+  }
+}, { passive: true });
+
+
+	
+//swipe (carrer and hobbies) section ends
 </script>
-</body>body>
-</html>html>
+</body>
+</html>
+
+
+
