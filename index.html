@@ -839,11 +839,6 @@ document.addEventListener("touchend", e => {
   const career = document.getElementById("career");
   const hobbies = document.getElementById("hobbies");
 
-  //removing active
-  document.querySelectorAll(".tab-buttons button").forEach(btn => btn.classList.remove("active"));
-
-  document.querySelectorAll(".tab-buttons button").forEach(btn => btn.classList.remove("active"));
-  
   // swipe logic
   if (career.classList.contains("active") && diffX < -50) {
     // swipe left → go to hobbies
@@ -854,12 +849,12 @@ document.addEventListener("touchend", e => {
   }
 }, { passive: true });
 
-
 	
 //swipe (carrer and hobbies) section ends
 </script>
 </body>
 </html>
+
 
 
 
