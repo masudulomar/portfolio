@@ -816,19 +816,16 @@ document.addEventListener("touchend", e => {
   // only allow swipe if journey section is at least half visible
   if (!isJourneyVisible()) return;
 
-  const career = document.getElementById("career");
-  const hobbies = document.getElementById("hobbies");
+  // get currently active tab dynamically
+  const activeTab = document.querySelector(".tab-content.active");
 
-  //removing active
-  document.querySelectorAll(".tab-buttons button").forEach(btn => btn.classList.remove("active"));
   // swipe logic
-  if (career.classList.contains("active") && diffX < -50) {
-    // swipe left → go to hobbies
+  if (activeTab.id === "career" && diffX < -50) {
     showTab("hobbies");
-  } else if (hobbies.classList.contains("active") && diffX > 50) {
-    // swipe right → go back to career
+  } else if (activeTab.id === "hobbies" && diffX > 50) {
     showTab("career");
   }
+
 }, { passive: true });
 
 
@@ -842,6 +839,7 @@ document.addEventListener("touchend", e => {
 
 </body>
 </html>
+
 
 
 
