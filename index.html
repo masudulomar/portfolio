@@ -560,6 +560,8 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
   <p>© 2025 Masudul Haque Omar | Contact: <a id="contact" href="mailto:masudul.omar@gmail.com">masudul.omar@gmail.com</a></p>
 </footer>
 
+<script src="https://www.youtube.com/iframe_api"></script>
+	
 <script>
 
 document.getElementById('menu-toggle').addEventListener('click', function(){
@@ -679,19 +681,19 @@ function setupSliders(autoMs = 4000) {
     let timer = null;
 
     function go(i) {
-      if (!items.length) return;
-      index = (i + items.length) % items.length;
-      slides.style.transform = `translateX(-${index * 100}%)`;
+  if (!items.length) return;
+  index = (i + items.length) % items.length;
+  slides.style.transform = `translateX(-${index * 100}%)`;
 
-  // Pause all YouTube iframes except the current slide
-      const iframes = slides.querySelectorAll('iframe');
-      iframes.forEach((iframe, idx) => {
-        if(idx !== index) {
-          const src = iframe.src;
-          iframe.src = src; // reset src to stop playback
-        }
-      });
-    }
+  // Stop all YouTube videos in this slider
+  if (slides.classList.contains('slidesifr')) {
+    slides.querySelectorAll('iframe').forEach(iframe => {
+      if (iframe.contentWindow) {
+        iframe.contentWindow.postMessage('{"event":"command","func":"stopVideo","args":""}', '*');
+      }
+    });
+  }
+}
 
 
     function start() {
@@ -847,6 +849,7 @@ document.addEventListener("touchend", e => {
 </script>
 </body>
 </html>
+
 
 
 
