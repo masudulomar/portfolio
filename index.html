@@ -644,13 +644,13 @@ function showTab(tab){
   document.querySelectorAll(".tab-buttons button").forEach(btn => btn.classList.remove("active"));
   document.querySelectorAll(".tab-content").forEach(content => content.classList.remove("active"));
   // replace this line:
-  // document.querySelector(`.tab-buttons button[onclick="showTab('${tab}')"]`).classList.add("active");
+  document.querySelector(`.tab-buttons button[onclick="showTab('${tab}')"]`).classList.add("active");
   // with this:
-  document.querySelectorAll(".tab-buttons button").forEach(btn => {
+  /*document.querySelectorAll(".tab-buttons button").forEach(btn => {
     if (btn.textContent.trim().toLowerCase() === tab.toLowerCase()) {
       btn.classList.add("active");
     }
-  });
+  });*/
 
 	
   document.getElementById(tab).classList.add("active");
@@ -819,6 +819,8 @@ document.addEventListener("touchend", e => {
   const career = document.getElementById("career");
   const hobbies = document.getElementById("hobbies");
 
+  //removing active
+  document.querySelectorAll(".tab-buttons button").forEach(btn => btn.classList.remove("active"));
   // swipe logic
   if (career.classList.contains("active") && diffX < -50) {
     // swipe left → go to hobbies
@@ -840,6 +842,7 @@ document.addEventListener("touchend", e => {
 
 </body>
 </html>
+
 
 
 
