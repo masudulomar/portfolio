@@ -792,11 +792,11 @@ function handleSwipe() {
 
   // swipe from right to left → career → hobbies
   if (touchEndX - touchStartX > 50) {
-    hobbies.scrollIntoView({ behavior: "smooth" });
+    career.scrollIntoView({ behavior: "smooth" });
   }
   // swipe from left to right → hobbies → career
   if (touchStartX - touchEndX > 50) {
-    career.scrollIntoView({ behavior: "smooth" });
+    hobbies.scrollIntoView({ behavior: "smooth" });
   }
 }
 
@@ -821,6 +821,7 @@ document.addEventListener('touchend', e => {
 
 </body>
 </html>
+
 
 
 
