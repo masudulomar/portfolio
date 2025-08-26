@@ -244,6 +244,7 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
       <li><a href="#journey" onclick="openHobbies('career'); return false;">Career</a></li>
       <li><a href="#">Skills</a></li>
       <li><a href="#">Projects</a></li>
+	  <li><a href="#">Training</a></li>
       <li><a href="#journey" onclick="openHobbies('hobbies'); return false;">Hobbies</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -290,7 +291,8 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
       <div class="highlights">
         <div class="highlight-box"><h3>5+ Years</h3><p>Experiences in both Govt. & Private sectors dealing with IT, Administration, Procurement and Defence Budget</p></div>
         <div class="highlight-box"><h3>Specialised In</h3><p>Skilled in software engineering and data science</p></div>
-        <div class="highlight-box"><h3>Leadership</h3><p>Proven track record in staff management & team coordination</p></div>
+        <div class="highlight-box"><h3>Leadership</h3><p>Proven track record in staff management & team coordination</p>
+		</div>
       </div>
       <button class="btn" onclick="showJourney()">Explore My Journey →</button>
     </div>
@@ -308,14 +310,20 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
   <div id="career" class="tab-content active">
     
     <div class="journey-step">
-      <div class="journey-text"><h3>School</h3><p>Sylhet Govt. Pilot High School – GPA 5.00 in SSC, early programming & math competitions.</p></div>
+      <div class="journey-text"><h3>School</h3><p>Sylhet Govt. Pilot High School – GPA 5.00 in SSC. That wonderful time made my childhood memorable. Exploring new things in such a competitive environment was truly helpful. </p></div>
     </div>
     
     <div class="journey-step">
-      <div class="journey-text"><h3>College</h3><p>Sylhet M.C. College – GPA 5.00 in HSC, top placements in Math & Astronomy Olympiads.</p></div>
+      <div class="journey-text"><h3>College</h3><p>Sylhet M.C. College – GPA 5.00 in HSC, top placements in Math & Astronomy Olympiads in Sylhet Region.</p>
+	  </div>
     </div>
     <div class="journey-step">
-      <div class="journey-text"><h3>University</h3><p>Dept. of CSTE, NSTU – Head of Programming Club, participated in NCPC & IUPC contests.</p></div>
+      <div class="journey-text"><h3>University</h3>
+		  <p>MSc (Engineering) in Information and Communication Technology (BUET)</p>
+		  <p><b>BSc (Engineering) in Computer Science and Telecommunication Engineering</b> (NSTU)</p>
+		  <p>Head of Programming Club, participated in <b>NCPC & IUPC contests</b>.</p>
+	      <p><b>National placement</b> in Undergraduate Math-Olympiad</p>
+	  </div>
     </div>
     <div class="journey-step" id="jobs">
       <div class="journey-text"><h3>Professional Career</h3><p>Lecturer (ICT) → Data Analyst (Staff Asia) → Officer-IT (Sonali Bank PLC) → Assistant Programmer (Bangladesh House Building Finance Corporation) → Assistant Director (Ministry of Defence, Bangladesh).</p>
@@ -835,7 +843,6 @@ document.addEventListener("touchend", e => {
   document.querySelectorAll(".tab-buttons button").forEach(btn => btn.classList.remove("active"));
 
   document.querySelectorAll(".tab-buttons button").forEach(btn => btn.classList.remove("active"));
-  document.querySelectorAll(".tab-content").forEach(content => content.classList.remove("active"));
   
   // swipe logic
   if (career.classList.contains("active") && diffX < -50) {
@@ -853,6 +860,7 @@ document.addEventListener("touchend", e => {
 </script>
 </body>
 </html>
+
 
 
 
