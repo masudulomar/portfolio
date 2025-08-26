@@ -732,11 +732,63 @@ document.addEventListener("DOMContentLoaded", () => {
     img.loading = "lazy"; // globally enable lazy loading
   });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const images = document.querySelectorAll("img");
+  images.forEach(img => {
+    img.loading = "lazy"; // globally enable lazy loading
+  });
+});
+
+
+// ================== SWIPE BETWEEN CAREER & HOBBIES ==================
+
+// track finger position
+let touchStartX = 0;
+let touchEndX = 0;
+
+function handleSwipe() {
+  const career = document.getElementById('career');
+  const hobbies = document.getElementById('hobbies');
   
+  // swipe left → go to hobbies if career is visible
+  if (touchStartX - touchEndX > 50 && isElementInViewport(career)) {
+    document.getElementById('hobbies').scrollIntoView({ behavior: "smooth" });
+  }
+  // swipe right → go to career if hobbies is visible
+  if (touchEndX - touchStartX > 50 && isElementInViewport(hobbies)) {
+    document.getElementById('career').scrollIntoView({ behavior: "smooth" });
+  }
+}
+
+function isElementInViewport(el) {
+  const rect = el.getBoundingClientRect();
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+}
+
+document.addEventListener('touchstart', e => {
+  touchStartX = e.changedTouches[0].screenX;
+});
+
+document.addEventListener('touchend', e => {
+  touchEndX = e.changedTouches[0].screenX;
+  handleSwipe();
+});
+
+</script>
+</body>
+</html>
+
 </script>
 
 </body>
 </html>
+
 
 
 
