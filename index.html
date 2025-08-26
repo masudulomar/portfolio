@@ -833,6 +833,10 @@ document.addEventListener("touchend", e => {
 
   //removing active
   document.querySelectorAll(".tab-buttons button").forEach(btn => btn.classList.remove("active"));
+
+  document.querySelectorAll(".tab-buttons button").forEach(btn => btn.classList.remove("active"));
+  document.querySelectorAll(".tab-content").forEach(content => content.classList.remove("active"));
+  
   // swipe logic
   if (career.classList.contains("active") && diffX < -50) {
     // swipe left → go to hobbies
@@ -849,6 +853,7 @@ document.addEventListener("touchend", e => {
 </script>
 </body>
 </html>
+
 
 
 
