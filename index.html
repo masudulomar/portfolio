@@ -772,32 +772,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // ================== SWIPE BETWEEN CAREER & HOBBIES ==================
 
-// track finger position
+// ================== SWIPE BETWEEN CAREER & HOBBIES ==================
 let touchStartX = 0;
 let touchEndX = 0;
 
 function handleSwipe() {
   const career = document.getElementById('career');
   const hobbies = document.getElementById('hobbies');
-  
-  // swipe left → go to hobbies if career is visible
-  if (touchStartX - touchEndX > 50 && isElementInViewport(career)) {
-    document.getElementById('hobbies').scrollIntoView({ behavior: "smooth" });
-  }
-  // swipe right → go to career if hobbies is visible
-  if (touchEndX - touchStartX > 50 && isElementInViewport(hobbies)) {
-    document.getElementById('career').scrollIntoView({ behavior: "smooth" });
-  }
-}
 
-function isElementInViewport(el) {
-  const rect = el.getBoundingClientRect();
-  return (
-    rect.top >= 0 &&
-    rect.left >= 0 &&
-    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-  );
+  // helper: check if element is at least half visible
+  function isHalfVisible(el) {
+    const rect = el.getBoundingClientRect();
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+    return (
+      rect.top < windowHeight * 0.5 &&
+      rect.bottom > windowHeight * 0.5
+    );
+  }
+
+  // swipe left → career → hobbies
+  if (touchStartX - touchEndX > 50 && isHalfVisible(career)) {
+    hobbies.scrollIntoView({ behavior: "smooth" });
+  }
+  // swipe right → hobbies → career
+  if (touchEndX - touchStartX > 50 && isHalfVisible(hobbies)) {
+    career.scrollIntoView({ behavior: "smooth" });
+  }
 }
 
 document.addEventListener('touchstart', e => {
@@ -809,6 +809,7 @@ document.addEventListener('touchend', e => {
   handleSwipe();
 });
 
+//swipe (carrer and hobbies) section ends
 </script>
 </body>
 </html>
@@ -817,6 +818,7 @@ document.addEventListener('touchend', e => {
 
 </body>
 </html>
+
 
 
 
