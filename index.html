@@ -772,40 +772,42 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // ================== SWIPE BETWEEN CAREER & HOBBIES ==================
 
-// ================== SWIPE BETWEEN CAREER & HOBBIES ==================
 let touchStartX = 0;
+let touchStartY = 0;
 let touchEndX = 0;
+let touchEndY = 0;
 
 function handleSwipe() {
   const career = document.getElementById('career');
   const hobbies = document.getElementById('hobbies');
+  const journey = document.getElementById('journey');
 
-  // helper: check if element is at least half visible
-  function isHalfVisible(el) {
-    const rect = el.getBoundingClientRect();
-    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-    return (
-      rect.top < windowHeight * 0.5 &&
-      rect.bottom > windowHeight * 0.5
-    );
-  }
+  // check if journey section is at least partially visible
+  const rect = journey.getBoundingClientRect();
+  const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+  if (rect.bottom < 0 || rect.top > windowHeight) return; // not visible, ignore swipe
+
+  const verticalMove = Math.abs(touchStartY - touchEndY);
+  if (verticalMove > 100) return; // ignore mostly vertical swipes
 
   // swipe left → career → hobbies
-  if (touchStartX - touchEndX > 50 && isHalfVisible(career)) {
+  if (touchStartX - touchEndX > 50) {
     hobbies.scrollIntoView({ behavior: "smooth" });
   }
   // swipe right → hobbies → career
-  if (touchEndX - touchStartX > 50 && isHalfVisible(hobbies)) {
+  if (touchEndX - touchStartX > 50) {
     career.scrollIntoView({ behavior: "smooth" });
   }
 }
 
 document.addEventListener('touchstart', e => {
   touchStartX = e.changedTouches[0].screenX;
+  touchStartY = e.changedTouches[0].screenY;
 });
 
 document.addEventListener('touchend', e => {
   touchEndX = e.changedTouches[0].screenX;
+  touchEndY = e.changedTouches[0].screenY;
   handleSwipe();
 });
 
@@ -819,4 +821,5 @@ document.addEventListener('touchend', e => {
 
 </body>
 </html>
+
 
