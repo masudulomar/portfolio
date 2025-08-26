@@ -566,6 +566,35 @@ document.getElementById('menu-toggle').addEventListener('click', function(){
   document.getElementById('nav-links').classList.toggle('show');
 });
 
+// Also hide dropdown on scroll and on any touch/swipe outside the menu
+(() => {
+  const navLinks = document.getElementById('nav-links');
+  const toggle = document.getElementById('menu-toggle');
+
+  const closeMenu = () => navLinks.classList.remove('show');
+
+  // Close on page scroll or mouse wheel
+  window.addEventListener('scroll', () => {
+    if (navLinks.classList.contains('show')) closeMenu();
+  }, { passive: true });
+
+  window.addEventListener('wheel', () => {
+    if (navLinks.classList.contains('show')) closeMenu();
+  }, { passive: true });
+
+  // Close on touch/swipe that starts or moves outside the menu/toggle
+  const handleTouch = (e) => {
+    if (!navLinks.classList.contains('show')) return;
+    const t = e.target;
+    if (navLinks.contains(t) || toggle.contains(t)) return; // ignore touches inside menu
+    closeMenu();
+  };
+
+  document.addEventListener('touchstart', handleTouch, { passive: true });
+  document.addEventListener('touchmove', handleTouch, { passive: true });
+})();
+
+	
 // Close menu when clicking outside
 document.addEventListener('click', function(e) {
   const navLinks = document.getElementById('nav-links');
@@ -788,6 +817,7 @@ document.addEventListener('touchend', e => {
 
 </body>
 </html>
+
 
 
 
