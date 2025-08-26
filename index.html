@@ -772,44 +772,43 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // ================== SWIPE BETWEEN CAREER & HOBBIES ==================
 
-
 // ================== SWIPE BETWEEN CAREER & HOBBIES ==================
 let touchStartX = 0;
+let touchEndX = 0;
 
-function isJourneyVisible() {
-  const journey = document.getElementById("journey");
-  const rect = journey.getBoundingClientRect();
-  const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-  // returns true if at least 50% of journey section is visible
-  return rect.top < windowHeight * 0.5 && rect.bottom > windowHeight * 0.5;
+function handleSwipe() {
+  const career = document.getElementById('career');
+  const hobbies = document.getElementById('hobbies');
+
+  // helper: check if element is at least half visible
+  function isHalfVisible(el) {
+    const rect = el.getBoundingClientRect();
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+    return (
+      rect.top < windowHeight * 0.5 &&
+      rect.bottom > windowHeight * 0.5
+    );
+  }
+
+  // swipe left → career → hobbies
+  if (touchStartX - touchEndX > 50 && isHalfVisible(career)) {
+    hobbies.scrollIntoView({ behavior: "smooth" });
+  }
+  // swipe right → hobbies → career
+  if (touchEndX - touchStartX > 50 && isHalfVisible(hobbies)) {
+    career.scrollIntoView({ behavior: "smooth" });
+  }
 }
 
-document.addEventListener("touchstart", e => {
+document.addEventListener('touchstart', e => {
   touchStartX = e.changedTouches[0].screenX;
-}, { passive: true });
+});
 
-document.addEventListener("touchend", e => {
-  const touchEndX = e.changedTouches[0].screenX;
-  const diffX = touchEndX - touchStartX;
+document.addEventListener('touchend', e => {
+  touchEndX = e.changedTouches[0].screenX;
+  handleSwipe();
+});
 
-  // only act if swipe distance is significant
-  if (Math.abs(diffX) < 50) return;
-
-  // only allow swipe if journey section is at least half visible
-  if (!isJourneyVisible()) return;
-
-  const career = document.getElementById("career");
-  const hobbies = document.getElementById("hobbies");
-
-  // swipe logic
-  if (career.classList.contains("active") && diffX < -50) {
-    // swipe left → go to hobbies
-    showTab("hobbies");
-  } else if (hobbies.classList.contains("active") && diffX > 50) {
-    // swipe right → go back to career
-    showTab("career");
-  }
-}, { passive: true });
 	
 //swipe (carrer and hobbies) section ends
 </script>
@@ -820,3 +819,4 @@ document.addEventListener("touchend", e => {
 
 </body>
 </html>
+
