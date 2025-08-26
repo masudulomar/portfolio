@@ -682,7 +682,17 @@ function setupSliders(autoMs = 4000) {
       if (!items.length) return;
       index = (i + items.length) % items.length;
       slides.style.transform = `translateX(-${index * 100}%)`;
+
+  // Pause all YouTube iframes except the current slide
+      const iframes = slides.querySelectorAll('iframe');
+      iframes.forEach((iframe, idx) => {
+        if(idx !== index) {
+          const src = iframe.src;
+          iframe.src = src; // reset src to stop playback
+        }
+      });
     }
+
 
     function start() {
       stop();
@@ -838,10 +848,6 @@ document.addEventListener("touchend", e => {
 </body>
 </html>
 
-</script>
-
-</body>
-</html>
 
 
 
