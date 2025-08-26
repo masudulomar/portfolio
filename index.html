@@ -566,6 +566,20 @@ document.getElementById('menu-toggle').addEventListener('click', function(){
   document.getElementById('nav-links').classList.toggle('show');
 });
 
+// Close menu when clicking outside
+document.addEventListener('click', function(e) {
+  const navLinks = document.getElementById('nav-links');
+  const toggle = document.getElementById('menu-toggle');
+  
+  // if menu is open, and click is outside menu + toggle
+  if (navLinks.classList.contains('show') && 
+      !navLinks.contains(e.target) && 
+      !toggle.contains(e.target)) {
+    navLinks.classList.remove('show');
+  }
+});
+
+
 
 function showJourney(){
   const journey = document.getElementById("journey");
@@ -723,6 +737,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </body>
 </html>
+
 
 
 
