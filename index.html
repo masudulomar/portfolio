@@ -248,7 +248,7 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
 
 <header>
   <nav>
-    <h1>Masudul Haque Omar y</h1>
+    <h1>Masudul Haque Omar z</h1>
     <div class="menu-toggle" id="menu-toggle">☰</div>  <!-- Hamburger icon -->
 	<!--
     <ul class="nav-links" id="nav-links">
@@ -515,6 +515,7 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
             
             <!--title="video 5"-->
 	    <iframe
+			  class="video-slide"
               width="560" 
               height="315" 
               src="https://www.youtube.com/embed/4PKyL5CbCAM?rel=0&modestbranding=1&controls=1"
@@ -523,7 +524,8 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
               allowfullscreen>
             </iframe>
             <!--title="video 2s"-->
-            <iframe 
+            <iframe
+			  class="video-slide"
               width="560" 
               height="315" 
               src="https://www.youtube.com/embed/zzRlbLitg1Y?rel=0&modestbranding=1&controls=1"
@@ -533,6 +535,7 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
             </iframe>
             <!--title="video 3s"-->
             <iframe 
+			  class="video-slide"
               width="560" 
               height="315" 
               src="https://www.youtube.com/embed/7fU6I0MZ6i0"
@@ -542,6 +545,7 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
             </iframe>
             <!--title="video 4s"-->
             <iframe 
+			  class="video-slide"
               width="560" 
               height="315" 
               src="https://www.youtube.com/embed/cxXazNlTU5o"
@@ -551,6 +555,7 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
             </iframe>
             <!--title="video 1s"-->
             <iframe 
+			  class="video-slide"
               width="560" 
               height="315" 
               src="https://www.youtube.com/embed/DZIFqNfyzxo"
@@ -560,6 +565,7 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
             </iframe>
             <!--title="video 6s"-->
             <iframe 
+			  class="video-slide"
               width="560" 
               height="315" 
               src="https://www.youtube.com/embed/7hTaJzaK3l0"
@@ -569,6 +575,7 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
             </iframe>
             <!--title="video 7"-->
             <iframe 
+			  class="video-slide"
               width="560" 
               height="315" 
               src="https://www.youtube.com/embed/pijPEhiO5Lo" 
@@ -578,6 +585,7 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
             </iframe>
             <!--title="video 8"-->
             <iframe 
+			  class="video-slide"
               width="560" 
               height="315" 
               src="https://www.youtube.com/embed/-aQOQo-rIm4" 
@@ -586,7 +594,8 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
               allowfullscreen>
             </iframe>
             <!--title="video 9"-->
-	    <iframe 
+	        <iframe
+			  class="video-slide"
               width="560" 
               height="315" 
               src="https://www.youtube.com/embed/-4ytukNN-2M"
@@ -890,12 +899,33 @@ document.addEventListener("touchend", e => {
 }, { passive: true });
 //swipe (carrer and hobbies) section ends
 
+//call stop videos - starts
+function stopAllVideos() {
+  const iframes = document.querySelectorAll(".video-slide");
+  iframes.forEach(iframe => {
+    iframe.contentWindow.postMessage(
+      '{"event":"command","func":"stopVideo","args":""}', '*'
+    );
+  });
+}
+
+// Example: if you have next/prev buttons
+document.querySelectorAll(".next, .prev").forEach(btn => {
+  btn.addEventListener("click", () => {
+    stopAllVideos();
+  });
+});
+
+// Example: if your slider changes automatically with setInterval
+// call stopAllVideos() inside the code where you update the slide index
+
 	
 </script>
 
 	
 </body>
 </html>
+
 
 
 
