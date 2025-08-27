@@ -880,12 +880,24 @@ document.addEventListener("touchend", e => {
     showTab("career");
   }
 }, { passive: true });
+//swipe (carrer and hobbies) section ends
 
 	
-//swipe (carrer and hobbies) section ends
 </script>
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+	
 </body>
 </html>
+
 
 
 
