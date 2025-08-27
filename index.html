@@ -234,13 +234,21 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
 
     
   </style>
+
+  <script>
+  if (window.location.hash) {
+    history.replaceState(null, null, ' ');
+  }
+</script>
+
+	
 </head>
 	
 <body id="home">
 
 <header>
   <nav>
-    <h1>Masudul Haque Omar</h1>
+    <h1>Masudul Haque Omar -</h1>
     <div class="menu-toggle" id="menu-toggle">☰</div>  <!-- Hamburger icon -->
 	<!--
     <ul class="nav-links" id="nav-links">
@@ -897,6 +905,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 	
 </body>
 </html>
+
 
 
 
