@@ -8,9 +8,7 @@
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
     body { font-family:'Poppins', sans-serif; background:#f4f7fa; color:#333; scroll-behavior:smooth; }
-	html {
-  		scroll-padding-top: 90px; /* same as your navbar height */
-    }
+	html { scroll-padding-top: 90px; /* same as your navbar height */ }
     
     /* Navbar */
  header nav {
@@ -238,20 +236,19 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
   </style>
 </head>
 	
-<body>
- <div id="home"></div> <!-- anchor for Home button -->
+<body id="home">
 
 <header>
   <nav>
     <h1>Masudul Haque Omar</h1>
     <div class="menu-toggle" id="menu-toggle">☰</div>  <!-- Hamburger icon -->
     <ul class="nav-links" id="nav-links">
-      <li><a href="#">Home</a></li>
+      <li><a href="#home">Home</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#journey" onclick="openHobbies('career'); return false;">Career</a></li>
-      <li><a href="#">Skills</a></li>
-      <li><a href="#">Projects</a></li>
-	  <li><a href="#">Training</a></li>
+      <li><a href="#home">Skills</a></li>
+      <li><a href="#home">Projects</a></li>
+	  <li><a href="#home">Training</a></li>
       <li><a href="#journey" onclick="openHobbies('hobbies'); return false;">Hobbies</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -861,6 +858,7 @@ document.addEventListener("touchend", e => {
 </script>
 </body>
 </html>
+
 
 
 
