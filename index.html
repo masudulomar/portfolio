@@ -242,6 +242,7 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
   <nav>
     <h1>Masudul Haque Omar</h1>
     <div class="menu-toggle" id="menu-toggle">☰</div>  <!-- Hamburger icon -->
+	<!--
     <ul class="nav-links" id="nav-links">
       <li><a href="#home">Home</a></li>
       <li><a href="#about">About</a></li>
@@ -251,7 +252,34 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
 	  <li><a href="#home">Training</a></li>
       <li><a href="#journey" onclick="openHobbies('hobbies'); return false;">Hobbies</a></li>
       <li><a href="#contact">Contact</a></li>
-    </ul>
+    </ul>-->
+	<ul class="nav-links" id="nav-links">
+	  <li>
+	    <a href="#home" onclick="event.preventDefault(); document.querySelector('#home').scrollIntoView({ behavior: 'smooth' });">Home</a>
+	  </li>
+	  <li>
+	    <a href="#about" onclick="event.preventDefault(); document.querySelector('#about').scrollIntoView({ behavior: 'smooth' });">About</a>
+	  </li>
+	  <li>
+	    <a href="#journey" onclick="event.preventDefault(); openHobbies('career'); document.querySelector('#journey').scrollIntoView({ behavior: 'smooth' });">Career</a>
+	  </li>
+	  <li>
+	    <a href="#home" onclick="event.preventDefault(); document.querySelector('#home').scrollIntoView({ behavior: 'smooth' });">Skills</a>
+	  </li>
+	  <li>
+	    <a href="#home" onclick="event.preventDefault(); document.querySelector('#home').scrollIntoView({ behavior: 'smooth' });">Projects</a>
+	  </li>
+	  <li>
+	    <a href="#home" onclick="event.preventDefault(); document.querySelector('#home').scrollIntoView({ behavior: 'smooth' });">Training</a>
+	  </li>
+	  <li>
+	    <a href="#journey" onclick="event.preventDefault(); openHobbies('hobbies'); document.querySelector('#journey').scrollIntoView({ behavior: 'smooth' });">Hobbies</a>
+	  </li>
+	  <li>
+	    <a href="#contact" onclick="event.preventDefault(); document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });">Contact</a>
+	  </li>
+	</ul>
+
   </nav>
 </header>
 
@@ -858,6 +886,7 @@ document.addEventListener("touchend", e => {
 </script>
 </body>
 </html>
+
 
 
 
