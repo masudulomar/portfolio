@@ -8,7 +8,7 @@
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
     body { font-family:'Poppins', sans-serif; background:#f4f7fa; color:#333; scroll-behavior:smooth; }
-	
+	html { scroll-padding-top: 90px; /* same as your navbar height */ }
     
     /* Navbar */
  header nav {
@@ -108,20 +108,20 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
     .about-image img { width:230px; height:230px; border-radius:50%; border:6px solid #003366; box-shadow:0 8px 20px rgba(0,0,0,0.2); }
     .about-text { flex:2 1 500px; }
     .about-text h2 { font-size:32px; margin-bottom:20px; color:#003366; position:relative; }
-    .about-text h2::after { content:""; display:block; width:70px; height:3px; background:#ffcc00; margin-top:8px; }
+    .about-text h2::after { content:""; display:block; width:150px; height:3px; background:#ffcc00; margin-top:8px; }
     .about-text p { font-size:17px; line-height:1.8; margin-bottom:20px; text-align:justify; }
     .highlights { display:flex; gap:30px; margin-top:20px; flex-wrap:wrap; }
     .highlight-box { flex:1 1 200px; background:#f4f7fa; padding:20px; border-radius:10px; text-align:center; box-shadow:0 4px 10px rgba(0,0,0,0.1); transition:0.3s; }
     .highlight-box:hover { transform:translateY(-5px); }
     .highlight-box h3 { font-size:22px; color:#003366; margin-bottom:10px; }
-    .highlight-box p { font-size:15px; }
+    .highlight-box p { font-size:14px; text-align:center;}
     .btn { display:inline-block; background:linear-gradient(135deg, #0a2342, #1e3c72); color:white; padding:12px 25px; border-radius:6px; text-decoration:none; transition:0.3s; font-weight:bold; margin-top:20px; cursor:pointer; }
     .btn:hover { background:#00509e; }
 
     /* Journey Section */
     .journey { max-width:1100px; margin:50px auto; padding:0 20px; display:none; }
-    .tab-buttons {display: flex; gap: 0px; margin-top: -90px; margin-bottom: 20px;}
-    .tab-buttons button { background:white; color:#003366; padding:8px 18px; font-size:14px; border-radius:6px; border:1px solid #d0d4da; cursor:pointer; transition:0.3s; }
+    .tab-buttons {position: sticky; top: 0; display: flex; flex-wrap: wrap; gap: 5px; margin-top: -90px; margin-bottom: 20px; align-items: center; justify-content: center;}
+    .tab-buttons button { background:white; color:#003366; padding:8px 18px; font-size:14px; border-radius:6px; border:1px solid #d0d4da; cursor:pointer; transition:0.3s; flex: 1 1 auto; width: 120px;}
     .tab-buttons button.active, .tab-buttons button:hover { background:linear-gradient(135deg, #0a2342, #1e3c72); color:#fff; }
     .tab-content { display:none; }
     .tab-content.active { display:block; }
@@ -234,14 +234,6 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
 
     
   </style>
-
-  <script>
-  if (window.location.hash) {
-    history.replaceState(null, null, ' ');
-  }
-  </script>
-
-	
 </head>
 	
 <body id="home">
@@ -250,44 +242,28 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
   <nav>
     <h1>Masudul Haque Omar</h1>
     <div class="menu-toggle" id="menu-toggle">☰</div>  <!-- Hamburger icon -->
-	<!--
     <ul class="nav-links" id="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#journey" onclick="openHobbies('career'); return false;">Career</a></li>
-      <li><a href="#home">Skills</a></li>
-      <li><a href="#home">Projects</a></li>
-	  <li><a href="#home">Training</a></li>
-      <li><a href="#journey" onclick="openHobbies('hobbies'); return false;">Hobbies</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>-->
-	<ul class="nav-links" id="nav-links">
-	  <li>
-	    <a href="#home" onclick="event.preventDefault(); document.querySelector('#home').scrollIntoView({ behavior: 'smooth' });">Home</a>
-	  </li>
-	  <li>
-	    <a href="#aboutme" onclick="event.preventDefault(); document.querySelector('#aboutme').scrollIntoView({ behavior: 'smooth' });">About</a>
-	  </li>
-	  <li>
-	    <a href="#journey" onclick="event.preventDefault(); openHobbies('career'); document.querySelector('#journey').scrollIntoView({ behavior: 'smooth' });">Career</a>
-	  </li>
-	  <li>
-	    <a href="#home" onclick="event.preventDefault(); document.querySelector('#home').scrollIntoView({ behavior: 'smooth' });">Skills</a>
-	  </li>
-	  <li>
-	    <a href="#home" onclick="event.preventDeaboutme(); document.querySelector('#home').scrollIntoView({ behavior: 'smooth' });">Projects</a>
-	  </li>
-	  <li>
-	    <a href="#home" onclick="event.preventDefault(); document.querySelector('#home').scrollIntoView({ behavior: 'smooth' });">Training</a>
-	  </li>
-	  <li>
-	    <a href="#journey" onclick="event.preventDefault(); openHobbies('hobbies'); document.querySelector('#journey').scrollIntoView({ behavior: 'smooth' });">Hobbies</a>
-	  </li>
-	  <li>
-	    <a href="#contact" onclick="event.preventDefault(); document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });">Contact</a>
-	  </li>
-	</ul>
 
+ 	<li><a href="#journey" onclick="openHobbies('home'); return false;">Home</a></li>
+ 	<li><a href="#journey" onclick="openHobbies('about'); return false;">About</a></li>
+        <li><a href="#journey" onclick="openHobbies('career'); return false;">Career</a></li>
+	<li><a href="#journey" onclick="openHobbies('academic'); return false;">Academic</a></li>
+	<li><a href="#journey" onclick="openHobbies('projects'); return false;">Projects</a></li>
+	<li><a href="#journey" onclick="openHobbies('achievements'); return false;">Achievements</a></li>
+	<li><a href="#journey" onclick="openHobbies('training'); return false;">Training</a></li>
+	<li><a href="#journey" onclick="openHobbies('skills'); return false;">Skills</a></li>
+	<li><a href="#journey" onclick="openHobbies('activities'); return false;">Activities</a></li>
+	<li><a href="#journey" onclick="openHobbies('hobbies'); return false;">Hobbies</a></li>
+ 	<li><a href="#journey" onclick="openHobbies('contact'); return false;">Contact</a></li>
+
+<!--
+	<li><a href="#journey" onclick="openHobbies('career'); return false;">Career</a></li>
+ 	<li><a href="#journey" onclick="openHobbies('hobbies'); return false;">Hobbies</a></li>
+ -->
+
+
+
+    </ul>
   </nav>
 </header>
 
@@ -296,19 +272,19 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
   <div>
     <h2>Hello, I'm Masudul Haque Omar</h2>
     <p>Assistant Director | Ministry of Defence, Bangladesh</p>
-    <a href="#aboutme" class="btn" onclick="event.preventDefault(); document.querySelector('#aboutme').scrollIntoView({ behavior: 'smooth' });">Discover More</a>
+    <a href="#about" class="btn">Discover More</a>
   </div>
 </section>
 
-<section class="about" id="aboutme">
+<section class="about" id="about">
   <div class="about-container">
 
     <div class="journey-image">
         <div class="slider">
           <div class="slides">
             <img src="myphoto1.webp" alt="Myphoto 1">
-            <img src="myphoto2.webp" alt="Myphoto 2">
-            <!--<img src="myphoto3.webp" alt="Myphoto 3">
+            <!--<img src="myphoto2.webp" alt="Myphoto 2">
+            <img src="myphoto3.webp" alt="Myphoto 3">
             <img src="myphoto4.webp" alt="Myphoto 4">
             <img src="myphoto5.webp" alt="Myphoto 5">
             <img src="myphoto6.webp" alt="Myphoto 6">
@@ -326,13 +302,17 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
       </div>
     <div class="about-text">
       <h2>About Me</h2>
-      <p>I am <strong>Masudul Haque Omar</strong>, currently serving as an <strong>Assistant Director at Ministry of Defence, Bangladesh</strong>. I bring expertise in data science, programming, system development, and administration.</p>
-      <p>I have contributed as a <strong>Data Analyst</strong> at Staff Asia and <strong>Assistant Programmer</strong> at BHBFC before joining MoD. Passionate about programming contests, research, and problem-solving.</p>
+      
+      <p>Hi, I am <strong>Masudul Haque Omar</strong>, an engineer by education and a 1<sup>st</sup> Class <strong>Gazetted Government Officer</strong> by profession. Currently I am serving as Assistant Director at Ministry of Defence, Bangladesh. </p>
+      <p>My professional journey began with a UK-based techno company, where I worked as a <strong>Data Analyst</strong>. I then transitioned to the government sector, serving in various roles including <strong>Assistant Programmer</strong>, <strong>Officer</strong>, <strong>Senior Officer</strong> and <strong>Assistant Director</strong>. Alongside my administrative career, I also contributed to the education sector as a <strong>Lecturer</strong> in ICT, blending technical expertise with teaching experience.</p>
+     
+      <p>I bring expertise in both software development and government administration. I am passionate about traveling, exploring new places, and embracing adventurous experiences.</p>
+      
       <div class="highlights">
-        <div class="highlight-box"><h3>5+ Years</h3><p>Experiences in both Govt. & Private sectors dealing with IT, Administration, Procurement and Defence Budget</p></div>
-        <div class="highlight-box"><h3>Specialised In</h3><p>Skilled in software engineering and data science</p></div>
+        <div class="highlight-box"><h3>Since 2019</h3><p>Experiences in both Govt. & Private sectors dealing with IT, Administration, Procurement and Defence Budget</p></div>
+        <div class="highlight-box"><h3>Specialised In</h3><p>Python, C++, Java, Django, PHP, ASP.NET, Oracle, MY SQL, PostgreSQL, Networking, data science, govt. procurements, govt. budget and administration</p></div>
         <div class="highlight-box"><h3>Leadership</h3><p>Proven track record in staff management & team coordination</p>
-		</div>
+	</div>
       </div>
       <button class="btn" onclick="showJourney()">Explore My Journey →</button>
     </div>
@@ -343,11 +323,25 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
   <!-- Tabs -->
   <div class="tab-buttons">
     <button class="active" onclick="showTab('career')">Career</button>
+    <button onclick="showTab('academic')">Academic</button>
+    <button onclick="showTab('projects')">Projects</button>
+    <button onclick="showTab('achievements')">Achievements</button>
+    <button onclick="showTab('training')">Training</button>
+    <button onclick="showTab('skills')">Skills</button>
+    <button onclick="showTab('activities')">Activities</button>
     <button onclick="showTab('hobbies')">Hobbies</button>
   </div>
 
-  <!-- Career Tab -->
+  <!-- Work experience tab -->
   <div id="career" class="tab-content active">
+    <div class="journey-step" id="jobs">
+      <div class="journey-text"><h3>Professional Career</h3><p>Lecturer (ICT) → Data Analyst (Staff Asia) → Officer-IT (Sonali Bank PLC) → Assistant Programmer (Bangladesh House Building Finance Corporation) → Assistant Director (Ministry of Defence, Bangladesh).</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Academic Tab -->
+  <div id="academic" class="tab-content">
     
     <div class="journey-step">
       <div class="journey-text"><h3>School</h3><p>Sylhet Govt. Pilot High School – GPA 5.00 in SSC. That wonderful time made my childhood memorable. Exploring new things in such a competitive environment was truly helpful. </p></div>
@@ -359,17 +353,151 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
     </div>
     <div class="journey-step">
       <div class="journey-text"><h3>University</h3>
-		  <p>MSc (Engineering) in Information and Communication Technology (BUET)</p>
+		  <p>MSc (Engineering) (running) in Information and Communication Technology (BUET)</p>
 		  <p><b>BSc (Engineering) in Computer Science and Telecommunication Engineering</b> (NSTU)</p>
 		  <p>Head of Programming Club, participated in <b>NCPC & IUPC contests</b>.</p>
 	      <p><b>National placement</b> in Undergraduate Math-Olympiad</p>
 	  </div>
     </div>
-    <div class="journey-step" id="jobs">
-      <div class="journey-text"><h3>Professional Career</h3><p>Lecturer (ICT) → Data Analyst (Staff Asia) → Officer-IT (Sonali Bank PLC) → Assistant Programmer (Bangladesh House Building Finance Corporation) → Assistant Director (Ministry of Defence, Bangladesh).</p>
+  </div>
+
+  <!-- Project Tab -->
+  <div id="projects" class="tab-content">
+    <div class="journey-step">
+      <div class="journey-text">
+    	<ul style="margin-left:40px">
+     		<li><b>Online Exam System:</b> ASP.NET, MySQL</li>
+      		<li><b>Hospital Management:</b> Java, MySQL</li>
+      		<li><b>Mess Management System:</b> Django, PostgreSQL</li>
+      		<li><b>Task Management System:</b> PHP, MySQL</li>
+      		<li><b>Wardroom Management System:</b> PHP, MySQL</li>
+      		<li><b>Typing Test BD:</b> <a href="https://masudulomar.github.io/TypingTestBD/" target="_blank">View Project</a></li>
+    	</ul>  
       </div>
     </div>
   </div>
+
+  <!-- Achievements Tab -->
+  <div id="achievements" class="tab-content">
+    <div class="journey-step">
+      <div class="journey-text">
+    	<h3>Programming References</h3>
+    	<ul style="margin-left:40px">
+      		<li>1st Runner up – Cumilla Regional Programming Contest (2015)</li>
+      		<li>NCPC & IUPC participations</li>
+    	</ul>
+      </div>
+    </div>
+    
+    <div class="journey-step">
+      <div class="journey-text">
+    	<h3>Other Achievements</h3>
+    	<ul style="margin-left:40px">
+	      <li>National Placement in Bangladesh Undergraduate Math Olympiad (2014)</li>
+	      <li>1st Runner up – Sylhet Regional Math Olympiad (HSC level)</li>
+	      <li>1st position – Sylhet Astronomical Olympiad (HSC level, Senior group)</li>
+	</ul>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Training tab -->
+  <div id="training" class="tab-content active">
+    <div class="journey-step">
+      <div class="journey-text">
+      	<h3>ASP.NET Web Application Development</h3>
+	<p><strong>Institute</strong>: BASIS (Bangladesh Association of Software and Information Services) Institute of Technology & Management (BITM)</p>
+	<p hidden><strong>Duration</strong>: 3 months</p>
+	<p><strong>Details</strong>: Contains HTML, CSS, Bootstrup, C#, , MySQL, MVC learning with a Online Exam System Project</p>
+      </div>
+    </div>
+
+    <div class="journey-step">
+      <div class="journey-text">
+        <h3>Cyber Security Training</h3>
+	<p><strong>Institute</strong>: Military Institute of Science and Technology (MIST) LeetCon</p>
+	<p><strong>Details</strong>: Cyber Attack & Threat, Incident Response & Forensics, Cloud and Application Security, Compliance & Policy, Risk Management & Governance</p>
+      </div>
+    </div>
+
+    <div class="journey-step">
+      <div class="journey-text">
+        <h3>Python Bootcamp</h3>
+	<p><strong>Institute</strong>: Bangladesh University of Engineering and Technology (BUET) DCE</p>
+	<p><strong>Details</strong>: Python Basics & Data Types, Control Flow & Functions, Data Structures, Modules & Libraries, Object-Oriented Programming (OOP), Dana Analysis and AI with python</p>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Skills Tab -->
+  <div id="skills" class="tab-content">
+
+    <div class="journey-step">
+      <div class="journey-text">
+    	<h3>Data Science</h3>
+    	<p>Data Cleaning & Preparation (Excel - Excel Query, Pivot, Lookup), Data Scraping (Python - Selenium, Beautiful Soup), Data Analysis (Python - Pandas)</p>
+      </div>
+    </div>
+
+    <div class="journey-step">
+      <div class="journey-text">
+    	<h3>Database</h3>
+    	<p>MySQL, Oracle, postgresql</p>
+      </div>
+    </div>
+
+    <div class="journey-step">
+      <div class="journey-text">
+    	<h3>Programming</h3>
+    	<p>C, C++, Java, Python, Javascript, PHP. Framework - Django, ASP.NET</p>
+      </div>
+    </div>
+
+    <div class="journey-step">
+      <div class="journey-text">
+    	<h3>Networking</h3>
+    	<p>Network Design, Network Access, Ip configuration, Network Security, Automation & Programmability</p>
+      </div>
+    </div>
+
+    <div class="journey-step">
+      <div class="journey-text">
+    	<h3>Admin, Procurement, Budget</h3>
+    	<p>Defence Admin, Govt Procurements (IT), Defence Budget</p>
+      </div>
+    </div>
+
+    <div class="journey-step">
+      <div class="journey-text">
+    	<h3>Language</h3>
+    	<p>Bangla, English</p>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- Activities Tab -->
+  <div id="activities" class="tab-content">
+    <div class="journey-step">
+      <div class="journey-text" =>
+    	<h3></h3>
+    	<ul style="margin-left:40px;">
+      		<li>Member of <strong>CSTE Alumni</strong> Association, NSTU</li>
+      		<li>Former <strong>President – CSTE Club</strong> (Programming, Event, Robotics), NSTU</li>
+      		<li><strong>Co-Founder</strong> and Former Treasurer of <strong>Jalalabad Student Welfare Association</strong>, NSTU</li>
+		<li>Worked as Co-Ordinator and Volunteer of regional <strong>Physics Olympiad, National High School Programming Contest</strong></li>
+
+    	</ul>
+      </div>
+    </div>
+  </div>
+
+
+
 
   <!-- Hobbies Tab -->
   <div id="hobbies" class="tab-content">
@@ -379,7 +507,7 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
         <div class="slider">
           <!--can use just "slidesnotr" class to remove autoslide feature-->
           <!--can use just "slides" class to add autoslide feature-->
-          <div class="slides">
+          <div class="slidesnotr">
             <!--<img src="travel1.jpg" alt="Travel 1">
             <img src="travel2.jpg" alt="Travel 2">
             <img src="travel3.jpg" alt="Travel 3">
@@ -423,7 +551,7 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
             <img src="travel9.webp" alt="Travel 9">
             <img src="travel10.webp" alt="Travel 10">
             <img src="travel11.webp" alt="Travel 11">
-            <img src="travel12.webp" alt="Travel 12">
+            <!--<img src="travel12.webp" alt="Travel 12">-->
             <img src="travel13.webp" alt="Travel 13">
             <img src="travel14.webp" alt="Travel 14">
             <img src="travel15.webp" alt="Travel 15">
@@ -515,7 +643,6 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
             
             <!--title="video 5"-->
 	    <iframe
-			  class="video-slide"
               width="560" 
               height="315" 
               src="https://www.youtube.com/embed/4PKyL5CbCAM?rel=0&modestbranding=1&controls=1&enablejsapi=1"
@@ -524,85 +651,79 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
               allowfullscreen>
             </iframe>
             <!--title="video 2s"-->
-            <iframe
-			  class="video-slide"
+            <iframe 
               width="560" 
               height="315" 
-              src="https://www.youtube.com/embed/zzRlbLitg1Y?rel=0&modestbranding=1&controls=1"
+              src="https://www.youtube.com/embed/zzRlbLitg1Y?rel=0&modestbranding=1&controls=1&enablejsapi=1"
               frameborder="0" 
               allow="autoplay; encrypted-media" 
               allowfullscreen>
             </iframe>
             <!--title="video 3s"-->
             <iframe 
-			  class="video-slide"
               width="560" 
               height="315" 
-              src="https://www.youtube.com/embed/7fU6I0MZ6i0?rel=0&enablejsapi=1"
+              src="https://www.youtube.com/embed/7fU6I0MZ6i0?enablejsapi=1"
               frameborder="0" 
               allow="autoplay; encrypted-media" 
               allowfullscreen>
             </iframe>
             <!--title="video 4s"-->
             <iframe 
-			  class="video-slide"
               width="560" 
               height="315" 
-              src="https://www.youtube.com/embed/cxXazNlTU5o?rel=0&enablejsapi=1&enablejsapi=1"
+              src="https://www.youtube.com/embed/cxXazNlTU5o?enablejsapi=1"
               frameborder="0" 
               allow="autoplay; encrypted-media" 
               allowfullscreen>
             </iframe>
             <!--title="video 1s"-->
             <iframe 
-			  class="video-slide"
               width="560" 
               height="315" 
-              src="https://www.youtube.com/embed/DZIFqNfyzxo?rel=0&enablejsapi=1"
+              src="https://www.youtube.com/embed/DZIFqNfyzxo?enablejsapi=1"
               frameborder="0" 
               allow="autoplay; encrypted-media" 
               allowfullscreen>
             </iframe>
             <!--title="video 6s"-->
             <iframe 
-			  class="video-slide"
               width="560" 
               height="315" 
-              src="https://www.youtube.com/embed/7hTaJzaK3l0?rel=0&enablejsapi=1"
+              src="https://www.youtube.com/embed/7hTaJzaK3l0?enablejsapi=1"
               frameborder="0" 
               allow="autoplay; encrypted-media" 
               allowfullscreen>
             </iframe>
             <!--title="video 7"-->
             <iframe 
-			  class="video-slide"
               width="560" 
               height="315" 
-              src="https://www.youtube.com/embed/pMhKYxDVUh4?rel=0&enablejsapi=1" 
+              src="https://www.youtube.com/embed/pijPEhiO5Lo?enablejsapi=1" 
               frameborder="0" 
               allow="autoplay; encrypted-media" 
               allowfullscreen>
             </iframe>
-            <!--title="video 8"-->
+            <!--
+	   
             <iframe 
-			  class="video-slide"
               width="560" 
               height="315" 
-              src="https://www.youtube.com/embed/a-qnGv43Kk4?rel=0&enablejsapi=1" 
+              src="https://www.youtube.com/embed/-aQOQo-rIm4?enablejsapi=1" 
               frameborder="0" 
               allow="autoplay; encrypted-media" 
               allowfullscreen>
             </iframe>
-            <!--title="video 9"-->
-	        <iframe
-			  class="video-slide"
+
+	    <iframe 
               width="560" 
               height="315" 
-              src="https://www.youtube.com/embed/-4ytukNN-2M?rel=0&enablejsapi=1"
+              src="https://www.youtube.com/embed/-4ytukNN-2M?enablejsapi=1"
               frameborder="0" 
               allow="autoplay; encrypted-media" 
               allowfullscreen>
             </iframe>
+	    -->
 
           </div>
         </div>
@@ -675,14 +796,21 @@ function showJourney(){
 
   // Hide the Explore My Journey button
   const btn = document.querySelector(".about-text .btn");
-  btn.style.display = "none";
+  if (btn) btn.style.display = "none";
 
-  // Scroll to top of journey section
-  window.scrollTo({ top: journey.offsetTop - 80, behavior: 'smooth' });
-
-  // Animate career steps
+  // Only animate first few visible steps initially
   const steps = document.querySelectorAll("#career .journey-step");
-  steps.forEach((step,i)=>{ step.classList.remove("visible"); setTimeout(()=>step.classList.add("visible"), i*300); });
+  steps.forEach((step, i) => {
+    step.classList.remove("visible");
+  });
+
+  // Animate with smaller delay for faster appearance
+  steps.forEach((step, i) => {
+    setTimeout(() => step.classList.add("visible"), i * 150); // 150ms instead of 300ms
+  });
+
+  // Scroll smoothly
+  journey.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function openHobbies(tabname) {
@@ -720,7 +848,9 @@ function showTab(tab){
   const steps = document.querySelectorAll(`#${tab} .journey-step`);
   steps.forEach((step,i)=>{ step.classList.remove("visible"); setTimeout(()=>step.classList.add("visible"), i*300); });
 
-  window.scrollTo({ top: document.getElementById("journey").offsetTop - 80, behavior:'smooth' });
+  //Commenting this line not auto scroll down while clicking on button
+  //window.scrollTo({ top: document.getElementById("journey").offsetTop - 80, behavior:'smooth' });
+
 }
 
 // === Slider logic (auto + manual) ===
@@ -729,7 +859,7 @@ function setupSliders(autoMs = 4000) {
 
   sliders.forEach(slider => {
     const container = slider.closest('.journey-image');
-    const slides = slider.querySelector('.slides, .slidesnotr, .slidesifr'); 
+    const slides = slider.querySelector('.slides, .slidesifr, .slidesnotr');
     const items = slides.children;
     const prev = container.querySelector('.slider-prev');
     const next = container.querySelector('.slider-next');
@@ -851,9 +981,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// ================== SWIPE BETWEEN CAREER & HOBBIES ==================
+// ================== SWIPE BETWEEN Work Experiences & HOBBIES ==================
 
-// ================== SWIPE BETWEEN CAREER & HOBBIES ==================
+// ================== SWIPE BETWEEN Work Experiences & HOBBIES ==================
 let touchStartX = 0;
 let touchStartY = 0;
 
@@ -897,69 +1027,9 @@ document.addEventListener("touchend", e => {
     showTab("career");
   }
 }, { passive: true });
+
+	
 //swipe (carrer and hobbies) section ends
-
-//call stop videos - starts
-function stopAllVideos() {
-  const iframes = document.querySelectorAll(".video-slide");
-  iframes.forEach(iframe => {
-    iframe.contentWindow.postMessage(
-      '{"event":"command","func":"stopVideo","args":""}', '*'
-    );
-  });
-}
-
-// Example: if you have next/prev buttons
-document.querySelectorAll(".next, .prev").forEach(btn => {
-  btn.addEventListener("click", () => {
-    stopAllVideos();
-  });
-});
-
-// Example: if your slider changes automatically with setInterval
-// call stopAllVideos() inside the code where you update the slide index
-
-	
 </script>
-
-	
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
