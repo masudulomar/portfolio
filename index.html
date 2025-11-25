@@ -305,8 +305,8 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
 
 <!-- if you want to off auto scroll then add just "return false" in a tag as a attribute; -->
  	<!-- <li><a href="#home">Home</a></li> -->
- 	<li><a href="#journey" onclick="openHobbies('about'); ">About</a></li>
-        <li><a href="#journey" onclick="openHobbies('career'); ">Career</a></li>
+ 	<li><a href="#about">About</a></li>
+    <li><a href="#journey" onclick="openHobbies('career'); ">Career</a></li>
 	<li><a href="#journey" onclick="openHobbies('academic'); ">Academic</a></li>
 	<li><a href="#journey" onclick="openHobbies('projects'); ">Projects</a></li>
 	<li><a href="#journey" onclick="openHobbies('achievements'); ">Achievements</a></li>
@@ -347,7 +347,7 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
   </div>
 </section>
 
-<section class="about" id="about">
+<section class="about">
   <div class="about-container">
 
     <div class="journey-image">
@@ -361,7 +361,7 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
         <button class="slider-btn slider-prev" aria-label="Previous slide">❮</button>
         <button class="slider-btn slider-next" aria-label="Next slide">❯</button>
       </div>
-    <div class="about-text">
+    <div class="about-text" id="about">
       <h2>About Me</h2>
       
       <p>
@@ -1021,6 +1021,7 @@ document.addEventListener("touchend", e => {
 </script>
 </body>
 </html>
+
 
 
 
