@@ -94,7 +94,29 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
 }
 
     /* Hero Section */
-    .hero { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('banner.webp') center/cover no-repeat; height:100vh; display:flex; align-items:center; justify-content:center; text-align:center; color:#fff; padding:0 20px; }
+
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      padding: 0 20px;
+      overflow: hidden;
+    }
+    .hero img.hero-bg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      filter: brightness(40%);
+    }
+
      @media (max-width: 900px) { .hero { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('banner-small.webp') center/cover no-repeat; }}
     .hero h2 { font-size:48px; margin-bottom:20px; animation:fadeInDown 1s ease; }
     .hero p { font-size:20px; margin-bottom:30px; animation:fadeInUp 1.5s ease; }
@@ -109,8 +131,32 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
     .about-text { flex:2 1 500px; }
     .about-text h2 { font-size:32px; margin-bottom:20px; color:#003366; position:relative; }
     .about-text h2::after { content:""; display:block; width:150px; height:3px; background:#ffcc00; margin-top:8px; }
-    .about-text p { font-size:17px; line-height:1.8; margin-bottom:20px; text-align:justify; }
-    .highlights { display:flex; gap:30px; margin-top:20px; flex-wrap:wrap; }
+    .about-text p {
+    font-family: "Segoe Print", "Poppins", "Segoe UI", Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    margin-bottom: 16px;
+    text-align: justify;
+    color: #2c2c2c;
+    letter-spacing: 0.2px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    }
+
+    .about-summary-text{
+    font-family: "Poppins", "Segoe UI", Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    margin-bottom: 16px;
+    text-align: justify;
+    color: #2c2c2c;
+    letter-spacing: 0.2px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    }
+    .highlights { display:flex; gap:30px; margin-top:20px; margin-bottom: 16px; flex-wrap:wrap; font-family: "Poppins", "Segoe UI", Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 1.6; text-align: justify; color: red#2c2c2c; letter-spacing: 0.2px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;}
     .highlight-box { flex:1 1 200px; background:#f4f7fa; padding:20px; border-radius:10px; text-align:center; box-shadow:0 4px 10px rgba(0,0,0,0.1); transition:0.3s; }
     .highlight-box:hover { transform:translateY(-5px); }
     .highlight-box h3 { font-size:22px; color:#003366; margin-bottom:10px; }
@@ -240,21 +286,22 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
 
 <header>
   <nav>
-    <h1>Masudul Haque Omar</h1>
+    <h1><ul class="nav-links" id="nav-links"><li><a href="#home">Masudul Haque Omar</a></li></h1></ul>
     <div class="menu-toggle" id="menu-toggle">☰</div>  <!-- Hamburger icon -->
     <ul class="nav-links" id="nav-links">
 
- 	<li><a href="#journey" onclick="openHobbies('home'); return false;">Home</a></li>
- 	<li><a href="#journey" onclick="openHobbies('about'); return false;">About</a></li>
-        <li><a href="#journey" onclick="openHobbies('career'); return false;">Career</a></li>
-	<li><a href="#journey" onclick="openHobbies('academic'); return false;">Academic</a></li>
-	<li><a href="#journey" onclick="openHobbies('projects'); return false;">Projects</a></li>
-	<li><a href="#journey" onclick="openHobbies('achievements'); return false;">Achievements</a></li>
-	<li><a href="#journey" onclick="openHobbies('training'); return false;">Training</a></li>
-	<li><a href="#journey" onclick="openHobbies('skills'); return false;">Skills</a></li>
-	<li><a href="#journey" onclick="openHobbies('activities'); return false;">Activities</a></li>
-	<li><a href="#journey" onclick="openHobbies('hobbies'); return false;">Hobbies</a></li>
- 	<li><a href="#journey" onclick="openHobbies('contact'); return false;">Contact</a></li>
+<!-- if you want to off auto scroll then add just "return false" in a tag as a attribute; -->
+ 	<!-- <li><a href="#home">Home</a></li> -->
+ 	<li><a href="#journey" onclick="openHobbies('about'); ">About</a></li>
+        <li><a href="#journey" onclick="openHobbies('career'); ">Career</a></li>
+	<li><a href="#journey" onclick="openHobbies('academic'); ">Academic</a></li>
+	<li><a href="#journey" onclick="openHobbies('projects'); ">Projects</a></li>
+	<li><a href="#journey" onclick="openHobbies('achievements'); ">Achievements</a></li>
+	<li><a href="#journey" onclick="openHobbies('training'); ">Training</a></li>
+	<li><a href="#journey" onclick="openHobbies('skills'); ">Skills</a></li>
+	<li><a href="#journey" onclick="openHobbies('activities'); ">Activities</a></li>
+	<li><a href="#journey" onclick="openHobbies('hobbies'); ">Hobbies</a></li>
+ 	<li><a href="#journey" onclick="openHobbies('contact'); ">Contact</a></li>
 
 <!--
 	<li><a href="#journey" onclick="openHobbies('career'); return false;">Career</a></li>
@@ -267,8 +314,19 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
   </nav>
 </header>
 
-
 <section class="hero">
+  <picture>
+     <!-- Mobile first -->
+     <source srcset="banner-small.webp" type="image/webp" media="(max-width: 900px)">
+     <source srcset="banner-small.jpg" type="image/jpeg" media="(max-width: 900px)">
+     
+     <!-- Desktop -->
+     <source srcset="banner.webp" type="image/webp">
+     <source srcset="banner.jpg" type="image/jpeg">
+     
+     <!-- Fallback -->
+     <img src="banner.jpg" class="hero-bg" alt="Banner">
+  </picture>
   <div>
     <h2>Hello, I'm Masudul Haque Omar</h2>
     <p>Assistant Director | Ministry of Defence, Bangladesh</p>
@@ -304,14 +362,20 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
     <div class="about-text">
       <h2>About Me</h2>
       
-      <p>Hi, this is <strong>Masudul Haque Omar</strong>, 1<sup>st</sup> Class <strong>Gazetted Government Officer</strong>, Currently serving as an <strong>Assistant Director</strong> at Ministry of Defence, Bangladesh</strong>. Furthermore, I am a <strong>Computer Engineer</strong>. </p>
-      <p>I commenced my professional career as a <strong>Data Analyst</strong> in a UK-based technology firm. Then I transitioned to the government sector, serving in various roles including <strong>Assistant Programmer</strong>, <strong>Officer</strong>, <strong>Senior Officer</strong> and <strong>Assistant Director</strong>. Alongside my administrative career, I also contributed to the education sector as a <strong>Lecturer</strong> in ICT, blending technical expertise with teaching experience. I bring expertise in both software development and government administration. </p>
-      <p>Beyond my professional pursuits, I enjoy traveling, discovering new places, and engaging in adventurous activities.</p>
+      <p>
+		Hi, this is <strong>Masudul Haque Omar</strong>, 1<sup>st</sup> Class <strong>Gazetted Government Officer</strong>, Currently serving as an <strong>Assistant Director</strong> at Ministry of Defence, Bangladesh</strong>. Furthermore, I am a <strong>Computer Engineer</strong>. 
+      </p>
+      <p>
+		I commenced my professional career as a <strong>Data Analyst</strong> in a UK-based technology firm. Then I transitioned to the government sector, serving in various roles including <strong>Assistant Programmer</strong>, <strong>Officer</strong>, <strong>Senior Officer</strong> and <strong>Assistant Director</strong>. Alongside my administrative career, I also contributed to the education sector as a <strong>Lecturer</strong> in ICT, blending technical expertise with teaching experience. I bring expertise in both software development and government administration. 
+      </p>
+      <p>
+		Beyond my professional pursuits, I enjoy traveling, discovering new places, and engaging in adventurous activities.
+      </p>
       
       <div class="highlights" style="padding-top:20px">
-        <div class="highlight-box"><h3>Since 2019</h3><p>Experiences in both Govt. & Private sectors dealing with IT, Administration, Procurement and Defence Budget</p></div>
-        <div class="highlight-box"><h3>Specialised In</h3><p>Python, C++, Java, Django, PHP, ASP.NET, Oracle, MY SQL, PostgreSQL, Networking, data science, govt. procurements, govt. budget and administration</p></div>
-        <div class="highlight-box"><h3>Leadership</h3><p>Proven track record in staff management & team coordination</p>
+        <div class="highlight-box"><h3>Since 2019</h3>Experiences in both Govt. & Private sectors dealing with IT, Administration, Procurement and Defence Budget</div>
+        <div class="highlight-box"><h3>Specialised In</h3>Python, C++, Java, Django, PHP, ASP.NET, Oracle, MY SQL, PostgreSQL, Networking, data science, govt. procurements, govt. budget and administration</div>
+        <div class="highlight-box"><h3>Leadership</h3>Proven track record in staff management & team coordination
 	</div>
       </div>
       <button class="btn" onclick="showJourney()">Explore My Journey →</button>
@@ -372,6 +436,7 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
       		<li><b>Task Management System:</b> PHP, MySQL</li>
       		<li><b>Wardroom Management System:</b> PHP, MySQL</li>
       		<li><b>Typing Test BD:</b> <a href="https://masudulomar.github.io/TypingTestBD/" target="_blank">View Project</a></li>
+      		<li><b>Network Design and Implementation of a Govt. Organization's HQ: </b>Project dealing officer</li>
     	</ul>  
       </div>
     </div>
@@ -948,10 +1013,6 @@ function setupSliders(autoMs = 4000) {
     //alternative of prev comment part -ends
 
 
-
-
-
-
   });
 }
 
@@ -1033,24 +1094,4 @@ document.addEventListener("touchend", e => {
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
