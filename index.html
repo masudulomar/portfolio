@@ -177,7 +177,18 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
     .journey-step.visible { opacity:1; transform:translateY(0); }
     .journey-text { flex:1; background:#fff; padding:25px; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.1); }
     .journey-text h3 { color:#003366; margin-bottom:10px; }
-    .journey-text p { font-size: 16px; line-height: 1.7; text-align: justify; text-justify: inter-word; word-spacing: 0.03em; letter-spacing: 0.2px; hyphens: none; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-align-last: left; }
+    .journey-text p {
+  		font-size: 16px;
+  		line-height: 1.7;
+  		text-align: justify;
+  		text-justify: inter-character; /* key change */
+  		letter-spacing: 0px;           /* remove extra spacing */
+  		hyphens: none;
+  		text-align-last: left;
+  		-webkit-font-smoothing: antialiased;
+  		-moz-osx-font-smoothing: grayscale;
+  		max-width: 700px; /* optional: wider container = smoother lines */
+	}
 /*    .journey-image { flex:1; text-align:center; }
     .journey-image img { width:100%; border-radius:12px; box-shadow:0 8px 20px rgba(0,0,0,0.2); }
 */
@@ -1013,6 +1024,7 @@ document.addEventListener("touchend", e => {
 </script>
 </body>
 </html>
+
 
 
 
