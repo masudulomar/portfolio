@@ -971,9 +971,74 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// ================== SWIPE BETWEEN Work Experiences & HOBBIES ==================
+// ================== SWIPE BETWEEN ALL TABS ==================
 
-// ================== SWIPE BETWEEN Work Experiences & HOBBIES ==================
+let touchStartX = 0;
+let touchStartY = 0;
+
+// ordered list of your tabs
+const tabsOrder = [
+  "career",
+  "academic",
+  "projects",
+  "achievements",
+  "training",
+  "skills",
+  "activities",
+  "hobbies"
+];
+
+function getCurrentTab() {
+  return tabsOrder.find(id => document.getElementById(id).classList.contains("active"));
+}
+
+function isJourneyVisible() {
+  const journey = document.getElementById("journey");
+  const rect = journey.getBoundingClientRect();
+  const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+
+  return rect.top < windowHeight * 0.5 && rect.bottom > windowHeight * 0.5;
+}
+
+document.addEventListener("touchstart", e => {
+  touchStartX = e.changedTouches[0].screenX;
+  touchStartY = e.changedTouches[0].screenY;
+}, { passive: true });
+
+document.addEventListener("touchend", e => {
+  const touchEndX = e.changedTouches[0].screenX;
+  const touchEndY = e.changedTouches[0].screenY;
+
+  const diffX = touchEndX - touchStartX;
+  const diffY = touchEndY - touchStartY;
+
+  // ignore mostly vertical swipes
+  if (Math.abs(diffY) > Math.abs(diffX)) return;
+
+  // only act if horizontal swipe is significant
+  if (Math.abs(diffX) < 50) return;
+
+  // only allow swipe if journey section is visible
+  if (!isJourneyVisible()) return;
+
+  const current = getCurrentTab();
+  const index = tabsOrder.indexOf(current);
+
+  // swipe left → next tab
+  if (diffX < -50 && index < tabsOrder.length - 1) {
+    showTab(tabsOrder[index + 1]);
+  }
+
+  // swipe right → previous tab
+  else if (diffX > 50 && index > 0) {
+    showTab(tabsOrder[index - 1]);
+  }
+
+}, { passive: true });
+
+// ================== END SWIPE ==================
+	
+/*// ================== SWIPE BETWEEN Work Experiences & HOBBIES ==================
 let touchStartX = 0;
 let touchStartY = 0;
 
@@ -1017,36 +1082,8 @@ document.addEventListener("touchend", e => {
     showTab("career");
   }
 }, { passive: true });
-
-	
 //swipe (carrer and hobbies) section ends
+*/
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
