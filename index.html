@@ -978,6 +978,7 @@ const tabsOrder = [
 ];
 
 function getCurrentTab() {
+  document.querySelectorAll(".tab-buttons button").forEach(btn => btn.classList.remove("active"));
   return tabsOrder.find(id => document.getElementById(id).classList.contains("active"));
 }
 
@@ -1076,6 +1077,7 @@ document.addEventListener("touchend", e => {
 </script>
 </body>
 </html>
+
 
 
 
