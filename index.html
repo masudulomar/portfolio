@@ -725,7 +725,7 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
 </section>
 
 <footer>
-  <p>© Masudul Haque Omar | Contact: <a id="contact" href="mailto:masudul.omar@gmail.com">masudul.omar@gmail.com</a></p>
+  <p>© Masudul Haque Omar | Contact: <a id="contact" href="mailto:masudul.omar@gmail.com">masudul.omar@gmail.com-</a></p>
 </footer>
 
 <script src="https://www.youtube.com/iframe_api"></script>
@@ -737,6 +737,7 @@ document.querySelectorAll("button").forEach(btn => {
   btn.addEventListener("click", () => {
 	if(btn.id.slice(0, 2)=="hb")
 	{
+		alert(btn.id.slice(3));
 		  	const journey = document.getElementById("journey");
   			journey.style.display = "block";							// Make sure journey section is visible
   			const btn = document.querySelector(".about-text .btn");		 // Hide the "Explore My Journey" button if still visible
@@ -1100,6 +1101,7 @@ document.addEventListener("touchend", e => {
 </script>
 </body>
 </html>
+
 
 
 
