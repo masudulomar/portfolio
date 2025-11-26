@@ -822,12 +822,18 @@ function showTab(tab){
   document.querySelectorAll(".tab-buttons button").forEach(btn => btn.classList.remove("active"));
 	
   // Highlight button based on tab variable
-  for (let btn of document.querySelectorAll(".tab-buttons button")) {			//or can be used just (but there is some highlighting problem), document.querySelector(`.tab-buttons button[onclick="showTab('${tab}')"]`).classList.add("active");
+  /*for (let btn of document.querySelectorAll(".tab-buttons button")) {			//or can be used just (but there is some highlighting problem), document.querySelector(`.tab-buttons button[onclick="showTab('${tab}')"]`).classList.add("active");
     if (btn.textContent.toLowerCase() === tab.toLowerCase()) {
         btn.classList.add("active");
         break; // stop immediately after first match
     }
-  }
+  }*/
+  //alternative the above loop we can use foEach
+  document.querySelectorAll(".tab-buttons button").forEach(btn => {
+    if(btn.textContent.toLowerCase() === tab.toLowerCase()) {
+        btn.classList.add("active");
+    }
+  });
 	
   document.getElementById(tab).classList.add("active"); // Add active to buttons
 
@@ -1075,6 +1081,7 @@ document.addEventListener("touchend", e => {
 </script>
 </body>
 </html>
+
 
 
 
