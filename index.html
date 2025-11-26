@@ -301,7 +301,7 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
 
 <header>
   <nav>
-    <h1 style="margin-left:0px"><a href="#home" style="text-decoration: none; color: inherit;">Masudul Haque Omar.</a></h1>
+    <h1 style="margin-left:0px"><a href="#home" style="text-decoration: none; color: inherit;">Masudul Haque Omar</a></h1>
     <div class="menu-toggle" id="menu-toggle">☰</div>  <!-- Hamburger icon -->
     <ul class="nav-links" id="nav-links">
 
@@ -818,10 +818,8 @@ function openHobbies(tabname) {
 }
 
 function showTab(tab){
-  alert("showtab tab: "+ tab);
   document.querySelectorAll(".tab-content").forEach(content => content.classList.remove("active"));
   document.querySelectorAll(".tab-buttons button").forEach(btn => btn.classList.remove("active"));
-  alert("showtabonclick: "+ onclick="showTab('${tab}'));
   document.querySelector(`.tab-buttons button[onclick="showTab('${tab}')"]`).classList.add("active");
   document.getElementById(tab).classList.add("active"); // Add active to buttons
 
@@ -1009,13 +1007,11 @@ document.addEventListener("touchend", e => {
   // swipe left → next tab
   if (diffX < -50 && index < tabsOrder.length - 1) {
     showTab(tabsOrder[index + 1]);
-	alert("left to next: "+ tabsOrder[index + 1]);
   }
 
   // swipe right → previous tab
   else if (diffX > 50 && index > 0) {
     showTab(tabsOrder[index - 1]);
-	alert("right to prev: "+ tabsOrder[index - 1]);
   }
 
 }, { passive: true });
@@ -1071,6 +1067,7 @@ document.addEventListener("touchend", e => {
 </script>
 </body>
 </html>
+
 
 
 
