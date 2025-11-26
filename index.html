@@ -301,7 +301,7 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
 
 <header>
   <nav>
-    <h1 style="margin-left:0px"><a href="#home" style="text-decoration: none; color: inherit;">Masudul Haque Omar</a></h1>
+    <h1 style="margin-left:0px"><a href="#home" style="text-decoration: none; color: inherit;">Masudul Haque Omarfd</a></h1>
     <div class="menu-toggle" id="menu-toggle">☰</div>  <!-- Hamburger icon -->
     <ul class="nav-links" id="nav-links">
 
@@ -817,29 +817,29 @@ function openHobbies(tabname) {
   showTab(tabname);
 }
 
-function showTab(tab){
-  document.querySelectorAll(".tab-content").forEach(content => content.classList.remove("active"));
-  document.querySelectorAll(".tab-buttons button").forEach(btn => btn.classList.remove("active"));
-	alert("tab");
-  // Highlight button based on tab variable
-  /*for (let btn of document.querySelectorAll(".tab-buttons button")) {			//or can be used just (but there is some highlighting problem), document.querySelector(`.tab-buttons button[onclick="showTab('${tab}')"]`).classList.add("active");
-    if (btn.textContent.toLowerCase() === tab.toLowerCase()) {
-        btn.classList.add("active");
-        break; // stop immediately after first match
-    }
-  }*/
-  //alternative the above loop we can use foEach
-  document.querySelectorAll(".tab-buttons button").forEach(btn => {
-    if(btn.textContent.toLowerCase() === tab.toLowerCase()) {
-        btn.classList.add("active");
-    }
-  });
-	alert("btn");
-  document.getElementById(tab).classList.add("active"); // Add active to buttons
 
-  const steps = document.querySelectorAll(`#${tab} .journey-step`);
-  steps.forEach((step,i)=>{ step.classList.remove("visible"); setTimeout(()=>step.classList.add("visible"), i*300); });
+
+function showTab(tab) {
+    // Remove active class from all tabs and buttons
+    document.querySelectorAll(".tab-content").forEach(content => content.classList.remove("active"));
+    document.querySelectorAll(".tab-buttons button").forEach(btn => btn.classList.remove("active"));
+
+    // Add active class to the selected button and content
+    const selectedButton = Array.from(document.querySelectorAll(".tab-buttons button"))
+                                .find(btn => btn.textContent.toLowerCase() === tab.toLowerCase());
+    if (selectedButton) selectedButton.classList.add("active");
+
+    const selectedContent = document.getElementById(tab);
+    if (selectedContent) selectedContent.classList.add("active");
+
+    // Animate the steps
+    const steps = document.querySelectorAll(`#${tab} .journey-step`);
+    steps.forEach((step, i) => {
+        step.classList.remove("visible");
+        setTimeout(() => step.classList.add("visible"), i * 300);
+    });
 }
+
 
 // === Slider logic (auto + manual) ===
 function setupSliders(autoMs = 4000) {
@@ -1081,6 +1081,7 @@ document.addEventListener("touchend", e => {
 </script>
 </body>
 </html>
+
 
 
 
