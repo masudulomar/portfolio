@@ -734,7 +734,7 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
 	
 document.querySelectorAll("button").forEach(btn => {
   btn.addEventListener("click", () => {
-    alert(btn.id.slice(3));
+    showTab(btn.id.slice(3));
   });
 });
 
@@ -1092,6 +1092,7 @@ document.addEventListener("touchend", e => {
 </script>
 </body>
 </html>
+
 
 
 
