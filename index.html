@@ -308,15 +308,15 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
 <!-- if you want to off auto scroll then add just "return false" in a tag as a attribute; -->
  	<!-- <li><a href="#home">Home</a></li> -->
  	<li><a href="#about">About</a></li>
-    <li><a href="#journey" onclick="openHobbies('career'); ">Career</a></li>
-	<li><a href="#journey" onclick="openHobbies('academic'); ">Academic</a></li>
-	<li><a href="#journey" onclick="openHobbies('projects'); ">Projects</a></li>
-	<li><a href="#journey" onclick="openHobbies('achievements'); ">Achievements</a></li>
-	<li><a href="#journey" onclick="openHobbies('training'); ">Training</a></li>
-	<li><a href="#journey" onclick="openHobbies('skills'); ">Skills</a></li>
-	<li><a href="#journey" onclick="openHobbies('activities'); ">Activities</a></li>
-	<li><a href="#journey" onclick="openHobbies('hobbies'); ">Hobbies</a></li>
- 	<li><a href="#journey" onclick="openHobbies('contact'); ">Contact</a></li>
+    <li><a href="#journey" id="career">Career</a></li>
+	<li><a href="#journey" id="academic">Academic</a></li>
+	<li><a href="#journey" id="projects">Projects</a></li>
+	<li><a href="#journey" id="achievements">Achievements</a></li>
+	<li><a href="#journey" id="training">Training</a></li>
+	<li><a href="#journey" id="skills">Skills</a></li>
+	<li><a href="#journey" id="activities">Activities</a></li>
+	<li><a href="#journey" id="hobbies">Hobbies</a></li>
+ 	<li><a href="#journey" id="contact">Contact</a></li>
 
 <!--
 	<li><a href="#journey" onclick="openHobbies('career'); return false;">Career</a></li>
@@ -732,6 +732,25 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
 	
 <script>
 
+
+const buttons = document.querySelectorAll(".tab-buttons button");
+
+buttons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    // Remove active from all buttons and all tab contents
+    buttons.forEach(b => b.classList.remove("active"));
+    document.querySelectorAll(".tab-content").forEach(c => c.classList.remove("active"));
+
+    // Add active to clicked button
+    btn.classList.add("active");
+
+    // Show corresponding tab
+    const tab = document.getElementById(btn.id);
+    if(tab) tab.classList.add("active");
+  });
+});
+
+
 document.getElementById('menu-toggle').addEventListener('click', function(){
   document.getElementById('nav-links').classList.toggle('show');
 });
@@ -1085,6 +1104,7 @@ document.addEventListener("touchend", e => {
 </script>
 </body>
 </html>
+
 
 
 
