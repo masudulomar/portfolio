@@ -301,7 +301,7 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
 
 <header>
   <nav>
-    <h1 style="margin-left:0px"><a href="#home" style="text-decoration: none; color: inherit;">Masudul Haque Omarfd</a></h1>
+    <h1 style="margin-left:0px"><a href="#home" style="text-decoration: none; color: inherit;">Masudul Haque Omar</a></h1>
     <div class="menu-toggle" id="menu-toggle">☰</div>  <!-- Hamburger icon -->
     <ul class="nav-links" id="nav-links">
 
@@ -819,25 +819,29 @@ function openHobbies(tabname) {
 
 
 
-function showTab(tab) {
-    // Remove active class from all tabs and buttons
-    document.querySelectorAll(".tab-content").forEach(content => content.classList.remove("active"));
-    document.querySelectorAll(".tab-buttons button").forEach(btn => btn.classList.remove("active"));
 
-    // Add active class to the selected button and content
-    const selectedButton = Array.from(document.querySelectorAll(".tab-buttons button"))
-                                .find(btn => btn.textContent.toLowerCase() === tab.toLowerCase());
-    if (selectedButton) selectedButton.classList.add("active");
+function showTab(tab){ 
+  // Remove active from all tab contents and buttons
+  document.querySelectorAll(".tab-content").forEach(content => content.classList.remove("active")); 
+  document.querySelectorAll(".tab-buttons button").forEach(btn => btn.classList.remove("active")); 
 
-    const selectedContent = document.getElementById(tab);
-    if (selectedContent) selectedContent.classList.add("active");
+  // Add active to the matching tab button
+  const btn = Array.from(document.querySelectorAll(".tab-buttons button"))
+                   .find(b => b.textContent.toLowerCase() === tab.toLowerCase());
+  if(btn) btn.classList.add("active");
 
-    // Animate the steps
-    const steps = document.querySelectorAll(`#${tab} .journey-step`);
-    steps.forEach((step, i) => {
-        step.classList.remove("visible");
-        setTimeout(() => step.classList.add("visible"), i * 300);
+  // Show the tab content
+  const tabContent = document.getElementById(tab);
+  if(tabContent) {
+    tabContent.classList.add("active");
+
+    // Animate steps
+    const steps = tabContent.querySelectorAll(".journey-step");
+    steps.forEach((step,i)=>{ 
+      step.classList.remove("visible"); 
+      setTimeout(()=>step.classList.add("visible"), i*300); 
     });
+  }
 }
 
 
@@ -1081,6 +1085,7 @@ document.addEventListener("touchend", e => {
 </script>
 </body>
 </html>
+
 
 
 
