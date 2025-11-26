@@ -308,15 +308,15 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
 <!-- if you want to off auto scroll then add just "return false" in a tag as a attribute; -->
  	<!-- <li><a href="#home">Home</a></li> -->
  	<li><a href="#about">About</a></li>
-    <li><a href="#journey" data-tab="career">Career</a></li>
-	<li><a href="#journey" data-tab="academic">Academic</a></li>
-	<li><a href="#journey" data-tab="projects">Projects</a></li>
-	<li><a href="#journey" data-tab="achievements">Achievements</a></li>
-	<li><a href="#journey" data-tab="training">Training</a></li>
-	<li><a href="#journey" data-tab="skills">Skills</a></li>
-	<li><a href="#journey" data-tab="activities">Activities</a></li>
-	<li><a href="#journey" data-tab="hobbies">Hobbies</a></li>
- 	<li><a href="#journey" data-tab="contact">Contact</a></li>
+    <li><a href="#journey" id="hb-career">Career</a></li>
+	<li><a href="#journey" id="hb-academic">Academic</a></li>
+	<li><a href="#journey" id="hb-projects">Projects</a></li>
+	<li><a href="#journey" id="hb-achievements">Achievements</a></li>
+	<li><a href="#journey" id="hb-training">Training</a></li>
+	<li><a href="#journey" id="hb-skills">Skills</a></li>
+	<li><a href="#journey" id="hb-activities">Activities</a></li>
+	<li><a href="#journey" id="hb-hobbies">Hobbies</a></li>
+ 	<li><a href="#journey" id="hb-contact">Contact</a></li>
 
 <!--
 	<li><a href="#journey" onclick="openHobbies('career'); return false;">Career</a></li>
@@ -390,14 +390,14 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
 <section class="journey" id="journey">
   <!-- Tabs -->
   <div class="tab-buttons">
-    <button class="active" onclick="showTab('career')">Career</button>
-    <button onclick="showTab('academic')">Academic</button>
-    <button onclick="showTab('projects')">Projects</button>
-    <button onclick="showTab('achievements')">Achievements</button>
-    <button onclick="showTab('training')">Training</button>
-    <button onclick="showTab('skills')">Skills</button>
-    <button onclick="showTab('activities')">Activities</button>
-    <button onclick="showTab('hobbies')">Hobbies</button>
+    <button class="active" id="b-career">Career</button>
+    <button id="bb-academic">Academic</button>
+    <button id="bb-projects">Projects</button>
+    <button id="bb-achievements">Achievements</button>
+    <button id="bb-training">Training</button>
+    <button id="bb-skills">Skills</button>
+    <button id="bb-activities">Activities</button>
+    <button id="bb-hobbies">Hobbies</button>
   </div>
 
   <!-- Work experience tab -->
@@ -725,31 +725,16 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
 </section>
 
 <footer>
-  <p>© Masudul Haque Omar | Contact: <a id="contact" href="mailto:masudul.omar@gmail.com">masudul.omar@gmail.com -</a></p>
+  <p>© Masudul Haque Omar | Contact: <a id="contact" href="mailto:masudul.omar@gmail.com">masudul.omar@gmail.com</a></p>
 </footer>
 
 <script src="https://www.youtube.com/iframe_api"></script>
 	
 <script>
-
-
-const buttons = document.querySelectorAll(".tab-buttons button");
-
-buttons.forEach(btn => {
+	
+document.querySelectorAll("button").forEach(btn => {
   btn.addEventListener("click", () => {
-    // Remove active from all buttons and all tab contents
-    buttons.forEach(b => b.classList.remove("active"));
-    document.querySelectorAll(".tab-content").forEach(c => c.classList.remove("active"));
-
-    // Add active to clicked button
-    btn.classList.add("active");
-	const tabId = btn.getAttribute("data-tab");
-    alert(tabId);
-    // Show corresponding tab
-    const tab = document.getElementById(btn.id);
-    if(tab) tab.classList.add("active");
-
-    showTab(tabId);
+    alert(btn.id);
   });
 });
 
@@ -1107,6 +1092,7 @@ document.addEventListener("touchend", e => {
 </script>
 </body>
 </html>
+
 
 
 
