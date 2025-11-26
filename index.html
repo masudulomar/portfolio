@@ -390,14 +390,14 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
 <section class="journey" id="journey">
   <!-- Tabs -->
   <div class="tab-buttons">
-    <button class="active" onclick="showTab('career')">Career</button>
-    <button onclick="showTab('academic')">Academic</button>
-    <button onclick="showTab('projects')">Projects</button>
-    <button onclick="showTab('achievements')">Achievements</button>
-    <button onclick="showTab('training')">Training</button>
-    <button onclick="showTab('skills')">Skills</button>
-    <button onclick="showTab('activities')">Activities</button>
-    <button onclick="showTab('hobbies')">Hobbies</button>
+  		<button class="active" data-tab="career" onclick="showTab('career')">Career</button>
+  		<button data-tab="academic" onclick="showTab('academic')">Academic</button>
+  		<button data-tab="projects" onclick="showTab('projects')">Projects</button>
+  		<button data-tab="achievements" onclick="showTab('achievements')">Achievements</button>
+  		<button data-tab="training" onclick="showTab('training')">Training</button>
+  		<button data-tab="skills" onclick="showTab('skills')">Skills</button>
+  		<button data-tab="activities" onclick="showTab('activities')">Activities</button>
+  		<button data-tab="hobbies" onclick="showTab('hobbies')">Hobbies</button>
   </div>
 
   <!-- Work experience tab -->
@@ -818,18 +818,22 @@ function openHobbies(tabname) {
 }
 
 
-
-
 function showTab(tab){ 
   // Remove active from all tab contents and buttons
   document.querySelectorAll(".tab-content").forEach(content => content.classList.remove("active")); 
   document.querySelectorAll(".tab-buttons button").forEach(btn => btn.classList.remove("active")); 
+	
+  // Add active to the matching tab button - FIXED VERSION
+  const activeButton = document.querySelector(`.tab-buttons button[data-tab="${tab}"]`);
+  if (activeButton) {
+    activeButton.classList.add("active");
+  }
 
-  // Add active to the matching tab button
+  /*// Add active to the matching tab button //alternative
   const btn = Array.from(document.querySelectorAll(".tab-buttons button"))
                    .find(b => b.textContent.toLowerCase() === tab.toLowerCase());
-  if(btn) btn.classList.add("active");
-
+  if(btn) btn.classList.add("active");*/
+	
   // Show the tab content
   const tabContent = document.getElementById(tab);
   if(tabContent) {
@@ -1085,4 +1089,5 @@ document.addEventListener("touchend", e => {
 </script>
 </body>
 </html>
+
 
