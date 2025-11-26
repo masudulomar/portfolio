@@ -308,15 +308,15 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
 <!-- if you want to off auto scroll then add just "return false" in a tag as a attribute; -->
  	<!-- <li><a href="#home">Home</a></li> -->
  	<li><a href="#about">About</a></li>
-    <li><a href="#journey" id="career">Career</a></li>
-	<li><a href="#journey" id="academic">Academic</a></li>
-	<li><a href="#journey" id="projects">Projects</a></li>
-	<li><a href="#journey" id="achievements">Achievements</a></li>
-	<li><a href="#journey" id="training">Training</a></li>
-	<li><a href="#journey" id="skills">Skills</a></li>
-	<li><a href="#journey" id="activities">Activities</a></li>
-	<li><a href="#journey" id="hobbies">Hobbies</a></li>
- 	<li><a href="#journey" id="contact">Contact</a></li>
+    <li><a href="#journey" data-tab="career">Career</a></li>
+	<li><a href="#journey" data-tab="academic">Academic</a></li>
+	<li><a href="#journey" data-tab="projects">Projects</a></li>
+	<li><a href="#journey" data-tab="achievements">Achievements</a></li>
+	<li><a href="#journey" data-tab="training">Training</a></li>
+	<li><a href="#journey" data-tab="skills">Skills</a></li>
+	<li><a href="#journey" data-tab="activities">Activities</a></li>
+	<li><a href="#journey" data-tab="hobbies">Hobbies</a></li>
+ 	<li><a href="#journey" data-tab="contact">Contact</a></li>
 
 <!--
 	<li><a href="#journey" onclick="openHobbies('career'); return false;">Career</a></li>
@@ -725,7 +725,7 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
 </section>
 
 <footer>
-  <p>© Masudul Haque Omar | Contact: <a id="contact" href="mailto:masudul.omar@gmail.com">masudul.omar@gmail.com</a></p>
+  <p>© Masudul Haque Omar | Contact: <a id="contact" href="mailto:masudul.omar@gmail.com">masudul.omar@gmail.com -</a></p>
 </footer>
 
 <script src="https://www.youtube.com/iframe_api"></script>
@@ -743,13 +743,13 @@ buttons.forEach(btn => {
 
     // Add active to clicked button
     btn.classList.add("active");
-alert(buttons);
-	  alert(b);
+	const tabId = btn.getAttribute("data-tab");
+    alert(tabId);
     // Show corresponding tab
     const tab = document.getElementById(btn.id);
     if(tab) tab.classList.add("active");
 
-    showTab(tab);
+    showTab(tabId);
   });
 });
 
@@ -1107,6 +1107,7 @@ document.addEventListener("touchend", e => {
 </script>
 </body>
 </html>
+
 
 
 
