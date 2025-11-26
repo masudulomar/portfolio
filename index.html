@@ -825,8 +825,11 @@ function showTab(tab){
 
 // Highlight button based on tab variable
 document.querySelectorAll(".tab-buttons button").forEach(btn => {
+	alert("text");
 	alert(btn.textContent.toLowerCase());
+    alert("tab");
 	alert(tab.toLowerCase());
+	alert(btn.textContent.toLowerCase() === tab.toLowerCase());
     if(btn.textContent.toLowerCase() === tab.toLowerCase()) {
         btn.classList.add("active");
     }
@@ -1078,6 +1081,7 @@ document.addEventListener("touchend", e => {
 </script>
 </body>
 </html>
+
 
 
 
