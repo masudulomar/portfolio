@@ -731,9 +731,17 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
 <script src="https://www.youtube.com/iframe_api"></script>
 	
 <script>
-	
+
+//Click action
 document.querySelectorAll("button").forEach(btn => {
   btn.addEventListener("click", () => {
+	if(btn.id.slice(0, 2)=="hb")
+	{
+		  	const journey = document.getElementById("journey");
+  			journey.style.display = "block";							// Make sure journey section is visible
+  			const btn = document.querySelector(".about-text .btn");		 // Hide the "Explore My Journey" button if still visible
+  			if (btn) btn.style.display = "none";
+	}
     showTab(btn.id.slice(3));
   });
 });
@@ -1092,6 +1100,7 @@ document.addEventListener("touchend", e => {
 </script>
 </body>
 </html>
+
 
 
 
