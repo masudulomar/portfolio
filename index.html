@@ -390,7 +390,7 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
 <section class="journey" id="journey">
   <!-- Tabs -->
   <div class="tab-buttons">
-    <button class="active" id="b-career">Career</button>
+    <button class="active" id="bb-career">Career</button>
     <button id="bb-academic">Academic</button>
     <button id="bb-projects">Projects</button>
     <button id="bb-achievements">Achievements</button>
@@ -734,7 +734,7 @@ header nav h1 { font-size:22px; font-weight:600; color:#fff; }
 	
 document.querySelectorAll("button").forEach(btn => {
   btn.addEventListener("click", () => {
-    alert(btn.id);
+    alert(btn.id.slice(3));
   });
 });
 
@@ -1092,6 +1092,7 @@ document.addEventListener("touchend", e => {
 </script>
 </body>
 </html>
+
 
 
 
