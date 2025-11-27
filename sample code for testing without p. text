@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Masudul Haque Omar - Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preload" as="image" href="banner.webp">
+  <link rel="preload" as="image" href="banner-small.webp" media="(max-width: 900px)">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Poppins', sans-serif; background:#f4f7fa; color:#333; scroll-behavior:smooth; }
+	html { scroll-padding-top: 90px; /* same as your navbar height */ }
+    
+    /* Navbar */
+ header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: #003366;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
+
+header nav h1 { font-size:22px; font-weight:600; color:#fff; }
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  color:#fff;
+  text-decoration:none;
+  font-weight:500;
+  transition:0.3s;
+}
+
+.nav-links li a:hover { color:#ffcc00; }
+
+/* Hamburger menu hidden on desktop */
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #fff;
+}
+
+/* Mobile view */
+@media (max-width: 900px) {
+  .menu-toggle { display: block; }
+
+  .nav-links {
+    gap: 0px;
+    flex-direction: column;
+    width: 150px;                   /* slightly wider for readability */
+    display: none;                  
+    background: #f8f9fa;            /* light professional background */
+    color: #003366;                 /* text color */
+    position: absolute;
+    top: 60px;
+    right: 0;                         /* left-aligned dropdown */
+    padding: 10px 0;
+    border-radius: 6px;             
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    border: 1px solid #dde2e6;
+  }
+
+  .nav-links li {
+    text-align: left;                /* left aligned */
+    margin: 2px 0;                   /* reduced gap between lines */
+    padding: 8px 20px;               /* padding inside each item */
+  }
+
+  .nav-links li a {
+    color: #003366;
+    font-weight: 500;
+    text-decoration: none;
+    display: block;                  /* make full width clickable */
+    transition: 0.2s;
+  }
+
+  .nav-links li a:hover {
+    background: #e6f0ff;             /* subtle hover highlight */
+    color: #003366;
+    border-radius: 4px;
+  }
+
+  .nav-links.show { display: flex; }
+}
+
+    /* Hero Section */
+
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      padding: 0 20px;
+      overflow: hidden;
+    }
+    .hero img.hero-bg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      filter: brightness(60%);
+	  background-color: #7a7777;
+    }
+
+
+    .hero h2 { font-size:48px; margin-bottom:20px; animation:fadeInDown 1s ease; }
+    .hero p { font-size:20px; margin-bottom:30px; animation:fadeInUp 1.5s ease; }
+    .hero .btn { background:#ffcc00; color:#003366; padding:14px 30px; border-radius:8px; text-decoration:none; font-weight:bold; transition:0.3s; }
+    .hero .btn:hover { background:#e6b800; }
+
+    /* About Section */
+    .about { background:#ffffff; padding:80px 20px; margin-top:100px; }
+    .about-container { display:flex; flex-wrap:wrap; align-items:center; max-width:1100px; margin:auto; gap:40px; }
+    .about-image { flex:1 1 280px; text-align:center; }
+    .about-image img { width:230px; height:230px; border-radius:50%; border:6px solid #003366; box-shadow:0 8px 20px rgba(0,0,0,0.2); }
+    .about-text { flex:2 1 500px; }
+    .about-text h2 { font-size:32px; margin-bottom:20px; color:#003366; position:relative; }
+    .about-text h2::after { content:""; display:block; width:150px; height:3px; background:#ffcc00; margin-top:8px; }
+    .about-text p {
+    font-family: "Segoe Print", "Patrick Hand", "Poppins", "Segoe UI", Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    margin-bottom: 16px;
+    text-align: justify;
+    color: #2c2c2c;
+    letter-spacing: 0.2px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    }
+
+    .about-summary-text{
+    font-family: "Poppins", "Segoe UI", Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    margin-bottom: 16px;
+    text-align: justify;
+    color: #2c2c2c;
+    letter-spacing: 0.2px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    }
+    .highlights { display:flex; gap:30px; margin-top:20px; margin-bottom: 16px; flex-wrap:wrap; font-family: "Poppins", "Segoe UI", Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 1.6; text-align: justify; color: red#2c2c2c; letter-spacing: 0.2px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;}
+    .highlight-box { flex:1 1 200px; background:#f4f7fa; padding:20px; border-radius:10px; text-align:center; box-shadow:0 4px 10px rgba(0,0,0,0.1); transition:0.3s; }
+    .highlight-box:hover { transform:translateY(-5px); }
+    .highlight-box h3 { font-size:22px; color:#003366; margin-bottom:10px; }
+    .highlight-box p { font-size:14px; text-align:center;}
+    .btn { display:inline-block; background:linear-gradient(135deg, #0a2342, #1e3c72); color:white; padding:12px 25px; border-radius:6px; text-decoration:none; transition:0.3s; font-weight:bold; margin-top:20px; cursor:pointer; }
+    .btn:hover { background:#00509e; }
+
+    /* Journey Section */
+    .journey { max-width:1100px; margin:50px auto; padding:0 20px; display:none; }
+    .tab-buttons {position: sticky; top: 0; display: flex; flex-wrap: wrap; gap: 5px; margin-top: -90px; margin-bottom: 20px; align-items: center; justify-content: center;}
+    .tab-buttons button { background:white; color:#003366; padding:8px 18px; font-size:14px; border-radius:6px; border:1px solid #d0d4da; cursor:pointer; transition:0.3s; flex: 1 1 auto; width: 120px;}
+    .tab-buttons button.active, .tab-buttons button:hover { background:linear-gradient(135deg, #0a2342, #1e3c72); color:#fff; }
+    .tab-content { display:none; }
+    .tab-content.active { display:block; }
+
+    .journey-step { display:flex; align-items:center; gap:30px; margin-bottom:50px; opacity:0; transform:translateY(50px); transition:0.6s; }
+    .journey-step.visible { opacity:1; transform:translateY(0); }
+    .journey-text { flex:1; background:#fff; padding:25px; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.1); }
+    .journey-text h3 { color:#003366; margin-bottom:10px; }
+    .journey-text p {
+  		font-size: 16px;
+  		line-height: 1.7;
+  		text-align: justify;
+  		text-justify: inter-character; /* key change */
+  		letter-spacing: 0px;           /* remove extra spacing */
+  		hyphens: none;
+  		text-align-last: left;
+  		-webkit-font-smoothing: antialiased;
+  		-moz-osx-font-smoothing: grayscale;
+  		max-width: 700px; /* optional: wider container = smoother lines */
+	}
+/*    .journey-image { flex:1; text-align:center; }
+    .journey-image img { width:100%; border-radius:12px; box-shadow:0 8px 20px rgba(0,0,0,0.2); }
+*/
+.journey-image {
+  width: 100%;
+  max-width: 350px; /* adjust size */
+  aspect-ratio: 4/3; /* responsive height based on width */
+  overflow: hidden;
+  border-radius: 10px;
+  position: relative;
+  margin: auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.slider {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.slidesifr {
+  display: flex;
+  height: 100%;
+}
+
+.slides {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slidesnotr {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.slidesifrnotr {
+  display: flex;
+  height: 100%;
+}
+
+/* ensure each slide takes full width */
+.slides > img {
+  flex: 0 0 100%;   /* each image takes full slider width */
+  width: 100%;      
+  height: 100%;     /* fill the container height */
+  object-fit: cover; 
+  display: block;
+}
+
+.slidesnotr > img {
+  flex: 0 0 100%;   /* each image takes full slider width */
+  width: 100%;      
+  height: 100%;     /* fill the container height */
+  object-fit: cover; 
+  display: block;
+}
+
+.slidesifr > iframe {
+  flex: 0 0 100%;
+  min-width: 100%;
+  max-width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* nav buttons */
+.journey-image .slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 2;
+}
+.journey-image .slider-prev { left: 8px; }
+.journey-image .slider-next { right: 8px; }
+
+
+
+    @media(max-width:900px){ 
+	.journey-step { flex-direction: column; } 
+	.journey-image { width: 100%; max-width: 100%; max-height: 350px; aspect-ratio: 4/3; overflow: hidden; } 
+	.slides > img, .slidesnotr > img, .slidesifr > iframe { flex: 0 0 100%; width: 100%; height: 100%; /* maintain aspect ratio */ object-fit: cover; display: block; } /* Remove extra margins on images */ 
+	.journey-image img { margin: 0 auto; } 
+    }
+
+    /* Footer */
+    footer { background:#003366; color:#fff; text-align:center; padding:25px; margin-top:50px; }
+    footer a { color:#ffcc00; text-decoration:none; }
+
+    @keyframes fadeInDown { from {opacity:0; transform:translateY(-20px);} to {opacity:1; transform:translateY(0);} }
+    @keyframes fadeInUp { from {opacity:0; transform:translateY(20px);} to {opacity:1; transform:translateY(0);} }
+
+    
+  </style>
+</head>
+	
+<body id="home">
+
+<header>
+  <nav>
+    <h1 style="margin-left:0px"><a href="#home" style="text-decoration: none; color: inherit;">Mar</a></h1>
+    <div class="menu-toggle" id="menu-toggle">☰</div>  <!-- Hamburger icon -->
+    <ul class="nav-links" id="nav-links">
+
+<!-- if you want to off auto scroll then add just "return false" in a tag as a attribute; -->
+ 	<!-- <li><a href="#home">Home</a></li> -->
+ 	<li><a href="#about">About</a></li>
+    <li><a href="#journey" onclick="openHobbies('career'); ">Career</a></li>
+	<li><a href="#journey" onclick="openHobbies('academic'); ">Academic</a></li>
+	<li><a href="#journey" onclick="openHobbies('projects'); ">Projects</a></li>
+	<li><a href="#journey" onclick="openHobbies('achievements'); ">Achievements</a></li>
+	<li><a href="#journey" onclick="openHobbies('training'); ">Training</a></li>
+	<li><a href="#journey" onclick="openHobbies('skills'); ">Skills</a></li>
+	<li><a href="#journey" onclick="openHobbies('activities'); ">Activities</a></li>
+	<li><a href="#journey" onclick="openHobbies('hobbies'); ">Hobbies</a></li>
+ 	<li><a href="#journey" onclick="openHobbies('contact'); ">Contact</a></li>
+
+<!--
+	<li><a href="#journey" onclick="openHobbies('career'); return false;">Career</a></li>
+ 	<li><a href="#journey" onclick="openHobbies('hobbies'); return false;">Hobbies</a></li>
+ -->
+
+
+
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <picture>
+     <!-- Mobile first -->
+     <source srcset="banner-small.webp" type="image/webp" media="(max-width: 900px)">
+     <source srcset="banner-small.jpg" type="image/jpeg" media="(max-width: 900px)">
+     
+     <!-- Desktop -->
+     <source srcset="banner.webp" type="image/webp">
+     <source srcset="banner.jpg" type="image/jpeg">
+     
+     <!-- Fallback -->
+     <img src="banner.jpg" class="hero-bg" alt="Banner">
+  </picture>
+  <div>
+    <h2>Hello, I'm Masudul Haque Omar</h2>
+    <p>Assistant Director | Ministry of Defence, Bangladesh</p>
+    <a href="#about" class="btn">Discover More</a>
+  </div>
+</section>
+
+<section class="about">
+  <div class="about-container">
+
+    <div class="journey-image">
+        <div class="slider">
+          <div class="slides">
+            <img src="myphoto1.webp" alt="Myphoto 1">
+            <img src="myphoto13.webp" alt="Myphoto 13">
+            <img src="myphoto14.webp" alt="Myphoto 14">
+          </div>
+        </div>
+        <button class="slider-btn slider-prev" aria-label="Previous slide">❮</button>
+        <button class="slider-btn slider-next" aria-label="Next slide">❯</button>
+      </div>
+    <div class="about-text" id="about">
+      <h2>About Me</h2>
+      
+      <p>
+		Hi, nginee 
+      </p>
+      <p>
+		I comme 
+      </p>
+      <p>
+		Beyond my professional pursuits, I enjoy traveling, discovering new places, and engaging in adventurous activities.
+      </p>
+      
+      <div class="highlights" style="padding-top:20px">
+        <div class="highlight-box"><h3>Since 2012</h3>get</div>
+        <div class="highlight-box"><h3>Specialised In</h3>Pstration</div>
+        <div class="highlight-box"><h3>Leadership</h3>Proven track record in staff management & team coordination
+	</div>
+      </div>
+      <button class="btn" onclick="showJourney()">Explore My Journey →</button>
+    </div>
+  </div>
+</section>
+
+<section class="journey" id="journey">
+  <!-- Tabs -->
+  <div class="tab-buttons">
+    <button class="active" onclick="showTab('career')">Career</button>
+    <button onclick="showTab('academic')">Academic</button>
+    <button onclick="showTab('projects')">Projects</button>
+    <button onclick="showTab('achievements')">Achievements</button>
+    <button onclick="showTab('training')">Training</button>
+    <button onclick="showTab('skills')">Skills</button>
+    <button onclick="showTab('activities')">Activities</button>
+    <button onclick="showTab('hobbies')">Hobbies</button>
+  </div>
+
+  <!-- Work experience tab -->
+  <div id="career" class="tab-content active">
+    <div class="journey-step" id="jobs">
+      <div class="journey-text"><h3>Professeer</h3><p>Lectuence, Bangladesh).</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Academic Tab -->
+  <div id="academic" class="tab-content">
+    
+    <div class="journey-step">
+      <div class="journey-text"><h3>School</h3>
+		  <p>Sylhet Govt. Pilot High School – GPA 5.00 in SSC.</p>
+		  <p style="margin-top:7px">In mpful. </p></div>
+    </div>
+    
+    <div class="journey-step">
+      <div class="journey-text"><h3>College</h3>
+		  <p>Sylhet M.C. College – GPA 5.00 in HSC. </p>
+		  <p style="margin-top:7px">In college let Region.</p>
+	  </div>
+    </div>
+    <div class="journey-step">
+      <div class="journey-text"><h3>University</h3>
+		  <p>MSc (Engiing.</p>
+		  <p style="margin-top:7px"><b>BSc (EngiTU).</p>
+		  <p style="margin-top:7px">In dent welfare</p>
+	  </div>
+    </div>
+  </div>
+
+  <!-- Project Tab -->
+  <div id="projects" class="tab-content">
+    <div class="journey-step">
+      <div class="journey-text">
+    	<ul style="margin-left:40px">
+     		<li><b>Online Exam System:</b> ASP.NET, MySQL</li>
+      		<li><b>Hospital Management:</b> Java, MySQL</li>
+      		<li><b>Mess Management System:</b> Django, PostgreSQL</li>
+      		<li><b>Task Management System:</b> PHP, MySQL</li>
+      		<li><b>Wardroom Management System:</b> PHP, MySQL</li>
+      		<li><b>Typing Test BD:</b> <a href="https://masudulomar.github.io/TypingTestBD/" target="_blank">View Project</a></li>
+      		<li><b>Network Design and Implementation of a Govt. Organization's HQ: </b>Project dealing officer</li>
+    	</ul>  
+      </div>
+    </div>
+  </div>
+
+  <!-- Achievements Tab -->
+  <div id="achievements" class="tab-content">
+    <div class="journey-step">
+      <div class="journey-text">
+    	<h3>Programming References</h3>
+    	<ul style="margin-left:40px">
+      		<li>1st Runn Contest (2015)</li>
+      		<li>NCations</li>
+    	</ul>
+      </div>
+    </div>
+    
+    <div class="journey-step">
+      <div class="journey-text">
+    	<h3>Other Achievements</h3>
+    	<ul style="margin-left:40px">
+	      <li>Nati4)</li>
+	      <li>1st Runnel)</li>
+	      <li>1st posiroup)</li>
+	</ul>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Training tab -->
+  <div id="training" class="tab-content active">
+    <div class="journey-step">
+      <div class="journey-text">
+      	<h3>ASP.NET Web Application Development</h3>
+	<p><strong>Institute</strong>: BASITM)</p>
+	<p><strong>Details</strong>: Containystem Project</p>
+      </div>
+    </div>
+
+    <div class="journey-step">
+      <div class="journey-text">
+        <h3>Cyning</h3>
+	<p><strong>Institute</strong>: MilittCon</p>
+	<p><strong>Details</strong>: Cybnance</p>
+      </div>
+    </div>
+
+    <div class="journey-step">
+      <div class="journey-text">
+        <h3>Python Bootcamp</h3>
+	<p><strong>Institute</strong>: BanglaCE</p>
+	<p><strong>Details</strong>: Pytming (OOP), Dana Analysis and AI with python</p>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Skills Tab -->
+  <div id="skills" class="tab-content">
+
+    <div class="journey-step">
+      <div class="journey-text">
+    	<h3>Daence</h3>
+    	<p>Datandas)</p>
+      </div>
+    </div>
+
+    <div class="journey-step">
+      <div class="journey-text">
+    	<h3>Datase</h3>
+    	<p>MySesql DB.</p>
+      </div>
+    </div>
+
+    <div class="journey-step">
+      <div class="journey-text">
+    	<h3>Pamming</h3>
+    	<p>C.NET</p>
+      </div>
+    </div>
+
+    <div class="journey-step">
+      <div class="journey-text">
+    	<h3>Netwog</h3>
+    	<p>Netammability</p>
+      </div>
+    </div>
+
+    <div class="journey-step">
+      <div class="journey-text">
+    	<h3>Addget</h3>
+    	<p>Administrget</p>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- Activities Tab -->
+  <div id="activities" class="tab-content">
+    <div class="journey-step">
+      <div class="journey-text" =>
+    	<h3></h3>
+    	<ul style="margin-left:40px;">
+      		<li>MemTU</li>
+      		<li>ForTU</li>
+      		<li><strong>Co-Fouion</strong>, NSTU</li>
+		<li>Worked as Co-Ontest</strong></li>
+
+    	</ul>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <!-- Hobbies Tab -->
+  <div id="hobbies" class="tab-content">
+    <div class="journey-step">
+      <div class="journey-text" style="height:250px;" ><h3>Travelling</h3><p>Traveling allows me to step beyond my usual environment and acquire broader outlook. Undergoing unfamiliar cultures, places, and people enhances my fluidity, curiosity, and focus to detail. These journeys provide Realization that influence my perspective to work, contributing significantly to my personal & professional growth.</p></div>
+      <div class="journey-image">
+        <div class="slider">
+          <!--can use just "slidesnotr" class to remove autoslide feature-->
+          <!--can use just "slides" class to add autoslide feature-->
+          <div class="slidesnotr">
+            <img src="travel1.webp" alt="Travel 1">
+            <img src="travel2.webp" alt="Travel 2">
+            <img src="travel3.webp" alt="Travel 3">
+            <img src="travel5.webp" alt="Travel 5">
+            <img src="travel8.webp" alt="Travel 8">
+            <img src="travel11.webp" alt="Travel 11">
+            <img src="travel14.webp" alt="Travel 14">
+            <img src="travel15.webp" alt="Travel 15">
+            <img src="travel16.webp" alt="Travel 16">
+            <img src="travel17.webp" alt="Travel 17">
+            <img src="travel19.webp" alt="Travel 19">
+            <img src="travel21.webp" alt="Travel 21">
+            <img src="travel22.webp" alt="Travel 22">
+            <img src="travel23.webp" alt="Travel 23">
+            <img src="travel24.webp" alt="Travel 24">
+            <img src="travel25.webp" alt="Travel 25">
+            <img src="travel26.webp" alt="Travel 26">
+            <img src="travel30.webp" alt="Travel 30">
+          </div>
+        </div>
+        <button class="slider-btn slider-prev" aria-label="Previous slide">❮</button>
+        <button class="slider-btn slider-next" aria-label="Next slide">❯</button>
+      </div>
+    </div>
+    <div class="journey-step">
+      <div class="journey-text" style="height:250px;"><h3>Photography</h3><p>Photography has become the natural extension of my travels, helping me capture moments and details that often remain unnoticed. By observing light, colors, and demonstration, I translate these experiences into images that tell a story. This practice sharpens my attention to detail and enriches how I see the world.</p></div>
+      <div class="journey-image">
+        <div class="slider">
+          <!--can use just "slides" class to add autoslide feature-->
+          <!--can use just "slidesnotr" class to remove autoslide feature-->
+          <div class="slidesnotr">
+            <img src="photo1.webp" alt="Photo 1">
+            <img src="photo2.webp" alt="Photo 2">
+            <img src="photo3.webp" alt="Photo 3">
+            <img src="photo4.webp" alt="Photo 4">
+            <img src="photo5.webp" alt="Photo 5">
+            <img src="photo6.webp" alt="Photo 6">
+            <img src="photo7.webp" alt="Photo 7">
+            <img src="photo8.webp" alt="Photo 8">
+            <img src="photo10.webp" alt="Photo 10">
+            <img src="photo11.webp" alt="Photo 11">
+            <img src="photo12.webp" alt="Photo 12">
+            <img src="photo13.webp" alt="Photo 13">
+            <img src="photo17.webp" alt="Photo 17">
+          </div>
+        </div>
+        <button class="slider-btn slider-prev" aria-label="Previous slide">❮</button>
+        <button class="slider-btn slider-next" aria-label="Next slide">❯</button>
+      </div>
+    </div>
+    <div class="journey-step">
+      <div class="journey-text" style="height:250px;"><h3>Videography</h3><p>Videography lets me capture experiences in a dynamic and immersive way. By focusing on movement, sound, as well as atmosphere, I intend to tell authentic stories. This practice has steadily strengthened my composition, momentum, and storytelling skills, allowing me to share experiences that others can truly feel.</p></div>
+      <div class="journey-image">
+        <div class="slider">
+
+          <!--can use just "slidesifr" class to add autoslide feature-->
+          <div class="slidesifr">
+            
+            <!--title="video 5"-->
+	    <iframe
+              width="560" 
+              height="315" 
+              src="https://wwejsapi=1"
+              frameborder="0" 
+              allow="autoplay; encrypted-media" 
+              allowfullscreen>
+            </iframe>
+
+
+          </div>
+        </div>
+        <button class="slider-btn slider-prev" aria-label="Previous slide">❮</button>
+        <button class="slider-btn slider-next" aria-label="Next slide">❯</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Masudul Haque Omar | Contact: <a id="contact" href="mailto:masudul.omar@gmail.com">masudul.omar@gmail.com</a></p>
+</footer>
+
+<script src="https://www.youtube.com/iframe_api"></script>
+	
+<script>
+
+document.getElementById('menu-toggle').addEventListener('click', function(){
+  document.getElementById('nav-links').classList.toggle('show');
+});
+
+// Also hide dropdown on scroll and on any touch/swipe outside the menu
+(() => {
+  const navLinks = document.getElementById('nav-links');
+  const toggle = document.getElementById('menu-toggle');
+
+  const closeMenu = () => navLinks.classList.remove('show');
+
+  // Close on page scroll or mouse wheel
+  window.addEventListener('scroll', () => {
+    if (navLinks.classList.contains('show')) closeMenu();
+  }, { passive: true });
+
+  window.addEventListener('wheel', () => {
+    if (navLinks.classList.contains('show')) closeMenu();
+  }, { passive: true });
+
+  // Close on touch/swipe that starts or moves outside the menu/toggle
+  const handleTouch = (e) => {
+    if (!navLinks.classList.contains('show')) return;
+    const t = e.target;
+    if (navLinks.contains(t) || toggle.contains(t)) return; // ignore touches inside menu
+    closeMenu();
+  };
+
+  document.addEventListener('touchstart', handleTouch, { passive: true });
+  document.addEventListener('touchmove', handleTouch, { passive: true });
+})();
+
+	
+// Close menu when clicking outside
+document.addEventListener('click', function(e) {
+  const navLinks = document.getElementById('nav-links');
+  const toggle = document.getElementById('menu-toggle');
+  
+  // if menu is open, and click is outside menu + toggle
+  if (navLinks.classList.contains('show') && 
+      !navLinks.contains(e.target) && 
+      !toggle.contains(e.target)) {
+    navLinks.classList.remove('show');
+  }
+});
+
+
+
+function showJourney(){
+  const journey = document.getElementById("journey");
+  journey.style.display = "block";
+
+  // Hide the Explore My Journey button
+  const btn = document.querySelector(".about-text .btn");
+  if (btn) btn.style.display = "none";
+
+  // Only animate first few visible steps initially
+  const steps = document.querySelectorAll("#career .journey-step");
+  steps.forEach((step, i) => {
+    step.classList.remove("visible");
+  });
+
+  // Animate with smaller delay for faster appearance
+  steps.forEach((step, i) => {
+    setTimeout(() => step.classList.add("visible"), i * 150); // 150ms instead of 300ms
+  });
+
+  // Scroll smoothly
+  journey.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function openHobbies(tabname) {
+  const journey = document.getElementById("journey");
+
+  // Make sure journey section is visible
+  journey.style.display = "block";
+
+  // Hide the "Explore My Journey" button if still visible
+  const btn = document.querySelector(".about-text .btn");
+  if (btn) btn.style.display = "none";
+
+  // Show the Hobbies tab
+  showTab(tabname);
+}
+
+
+
+
+function showTab(tab){ 
+  // Remove active from all tab contents and buttons
+  document.querySelectorAll(".tab-content").forEach(content => content.classList.remove("active")); 
+  document.querySelectorAll(".tab-buttons button").forEach(btn => btn.classList.remove("active")); 
+
+  // Add active to the matching tab button
+  const btn = Array.from(document.querySelectorAll(".tab-buttons button"))
+                   .find(b => b.textContent.toLowerCase() === tab.toLowerCase());
+  if(btn) btn.classList.add("active");
+
+  // Show the tab content
+  const tabContent = document.getElementById(tab);
+  if(tabContent) {
+    tabContent.classList.add("active");
+
+    // Animate steps
+    const steps = tabContent.querySelectorAll(".journey-step");
+    steps.forEach((step,i)=>{ 
+      step.classList.remove("visible"); 
+      setTimeout(()=>step.classList.add("visible"), i*300); 
+    });
+  }
+}
+
+
+// === Slider logic (auto + manual) ===
+function setupSliders(autoMs = 4000) {
+  const sliders = document.querySelectorAll('.journey-image .slider');
+
+  sliders.forEach(slider => {
+    const container = slider.closest('.journey-image');
+    const slides = slider.querySelector('.slides, .slidesifr, .slidesnotr');
+    const items = slides.children;
+    const prev = container.querySelector('.slider-prev');
+    const next = container.querySelector('.slider-next');
+
+    let index = 0;
+    let timer = null;
+
+    function go(i) {
+  if (!items.length) return;
+  index = (i + items.length) % items.length;
+  slides.style.transform = `translateX(-${index * 100}%)`;
+
+  // Stop all YouTube videos in this slider
+  if (slides.classList.contains('slidesifr')) {
+    slides.querySelectorAll('iframe').forEach(iframe => {
+      if (iframe.contentWindow) {
+        iframe.contentWindow.postMessage('{"event":"command","func":"stopVideo","args":""}', '*');
+      }
+    });
+  }
+}
+
+
+    function start() {
+      stop();
+      if (slides.classList.contains('slides') && items.length > 1) { 
+        timer = setInterval(() => go(index + 1), autoMs); 
+      }
+
+
+    }
+
+    function stop() {
+      if (timer) clearInterval(timer);
+      timer = null;
+    }
+
+    // Hide controls if only one image
+    if (items.length < 2) {
+      if (prev) prev.style.display = 'none';
+      if (next) next.style.display = 'none';
+    }
+
+    if (prev) prev.addEventListener('click', () => { go(index - 1); resetTimer(); });
+    if (next) next.addEventListener('click', () => { go(index + 1); resetTimer(); });
+
+    function resetTimer() {
+      stop();   // stop current auto-slide interval
+      start();  // start a fresh interval from now
+    }
+
+    // Pause on hover for better UX
+    container.addEventListener('mouseenter', stop);
+    container.addEventListener('mouseleave', start);
+
+    /*go(0);
+    start();*/
+
+
+    //alternative of prev comment part -starts
+    // Wait until all images in this slider are loaded
+    const imgs = slider.querySelectorAll('img');
+    let loadedCount = 0;
+    if (imgs.length === 0) {
+      go(0);
+      start();
+    } else {
+      imgs.forEach(img => {
+        if (img.complete) {
+          loadedCount++;
+          if (loadedCount === imgs.length) {
+            go(0);
+            start();
+          }
+        } else {
+          img.addEventListener('load', () => {
+            loadedCount++;
+            if (loadedCount === imgs.length) {
+              go(0);
+              start();
+            }
+          });
+        }
+      });
+    }
+    //alternative of prev comment part -ends
+
+  });
+}
+
+// Run once on load
+setupSliders();
+
+// Optional: when switching tabs, restart animations for visible tab
+const tabButtons = document.querySelectorAll('.tab-buttons button');
+tabButtons.forEach(btn => btn.addEventListener('click', () => {
+  // small delay so tab becomes visible, then reset transforms/timers
+  setTimeout(() => setupSliders(), 50);
+}));
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const images = document.querySelectorAll("img");
+  images.forEach(img => {
+    img.loading = "lazy"; // globally enable lazy loading
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const images = document.querySelectorAll("img");
+  images.forEach(img => {
+    img.loading = "lazy"; // globally enable lazy loading
+  });
+});
+
+
+// ================== SWIPE BETWEEN ALL TABS ==================
+
+let touchStartX = 0;
+let touchStartY = 0;
+
+// ordered list of your tabs
+const tabsOrder = [
+  "career",
+  "academic",
+  "projects",
+  "achievements",
+  "training",
+  "skills",
+  "activities",
+  "hobbies"
+];
+
+function getCurrentTab() {
+  return tabsOrder.find(id => document.getElementById(id).classList.contains("active"));
+}
+
+function isJourneyVisible() {
+  const journey = document.getElementById("journey");
+  const rect = journey.getBoundingClientRect();
+  const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+
+  return rect.top < windowHeight * 0.5 && rect.bottom > windowHeight * 0.5;
+}
+
+document.addEventListener("touchstart", e => {
+  touchStartX = e.changedTouches[0].screenX;
+  touchStartY = e.changedTouches[0].screenY;
+}, { passive: true });
+
+document.addEventListener("touchend", e => {
+	
+  const touchEndX = e.changedTouches[0].screenX;
+  const touchEndY = e.changedTouches[0].screenY;
+
+  const diffX = touchEndX - touchStartX;
+  const diffY = touchEndY - touchStartY;
+
+  // ignore mostly vertical swipes
+  if (Math.abs(diffY) > Math.abs(diffX)) return;
+
+  // only act if horizontal swipe is significant
+  if (Math.abs(diffX) < 50) return;
+
+  // only allow swipe if journey section is visible
+  if (!isJourneyVisible()) return;
+
+  const current = getCurrentTab();
+  const index = tabsOrder.indexOf(current);
+
+  // swipe left → next tab
+  if (diffX < -50 && index < tabsOrder.length - 1) {
+    showTab(tabsOrder[index + 1]);
+  }
+
+  // swipe right → previous tab
+  else if (diffX > 50 && index > 0) {
+    showTab(tabsOrder[index - 1]);
+  }
+
+}, { passive: true });
+
+// ================== END SWIPE ==================
+	
+/*// ================== SWIPE BETWEEN Work Experiences & HOBBIES ==================
+let touchStartX = 0;
+let touchStartY = 0;
+
+function isJourneyVisible() {
+  const journey = document.getElementById("journey");
+  const rect = journey.getBoundingClientRect();
+  const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+  // returns true if at least 50% of journey section is visible
+  return rect.top < windowHeight * 0.5 && rect.bottom > windowHeight * 0.5;
+}
+
+document.addEventListener("touchstart", e => {
+  touchStartX = e.changedTouches[0].screenX;
+  touchStartY = e.changedTouches[0].screenY;
+}, { passive: true });
+
+document.addEventListener("touchend", e => {
+  const touchEndX = e.changedTouches[0].screenX;
+  const touchEndY = e.changedTouches[0].screenY;
+  const diffX = touchEndX - touchStartX;
+  const diffY = touchEndY - touchStartY;
+
+  // ignore mostly vertical swipes
+  if (Math.abs(diffY) > Math.abs(diffX)) return;
+
+  // only act if horizontal swipe distance is significant
+  if (Math.abs(diffX) < 50) return;
+
+  // only allow swipe if journey section is at least half visible
+  if (!isJourneyVisible()) return;
+
+  const career = document.getElementById("career");
+  const hobbies = document.getElementById("hobbies");
+
+  // swipe logic
+  if (career.classList.contains("active") && diffX < -50) {
+    // swipe left → go to hobbies
+    showTab("hobbies");
+  } else if (hobbies.classList.contains("active") && diffX > 50) {
+    // swipe right → go back to career
+    showTab("career");
+  }
+}, { passive: true });
+//swipe (carrer and hobbies) section ends
+*/
+</script>
+</body>
+</html>
