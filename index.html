@@ -825,7 +825,7 @@ function showTab(tab){
   document.querySelectorAll(".tab-content").forEach(content => content.classList.remove("active")); 
   document.querySelectorAll(".tab-buttons button").forEach(btn => btn.classList.remove("active")); 
 alert("hi");
-  /*// Add active to the matching tab button
+  // Add active to the matching tab button
   const btn = Array.from(document.querySelectorAll(".tab-buttons button"))
                    .find(b => b.textContent.toLowerCase() === tab.toLowerCase());
   if(btn) btn.classList.add("active");
@@ -833,7 +833,7 @@ alert("hi");
   // Show the tab content
   const tabContent = document.getElementById(tab);
   if(tabContent) {
-    tabContent.classList.add("active");*/
+    tabContent.classList.add("active");
 
     // Animate steps
     const steps = tabContent.querySelectorAll(".journey-step");
@@ -1085,5 +1085,6 @@ document.addEventListener("touchend", e => {
 </script>
 </body>
 </html>
+
 
 
